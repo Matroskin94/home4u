@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: path.join(__dirname, 'src', 'App.jsx'),
+    entry: './src/App.jsx',
     output: {
         path: path.resolve(__dirname, 'public'),
         filename: 'bundle.js',
@@ -15,6 +15,9 @@ module.exports = {
                 loader: "babel-loader"
             }
         ]
+    },
+    devServer: {
+        contentBase: path.join(__dirname, 'public')
     },
     mode: 'development'
 };
