@@ -4,9 +4,9 @@
   "description": "Front-end part of home4u system",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
-    "build": "webpack"
+    "build": "webpack",
+    "lint": "./node_modules/.bin/eslint src/**"
   },
   "author": "Matroskin",
   "license": "ISC",
@@ -16,6 +16,8 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
     "webpack": "^4.1.1"
   },
   "devDependencies": {
@@ -28,6 +30,7 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
+    "redux-logger": "^3.0.6",
     "webpack-cli": "^2.0.12",
     "webpack-dev-server": "^3.1.1"
   }

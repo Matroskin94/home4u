@@ -1,9 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
+import AppRouter from './pages/AppRouter.jsx';
 
 render(
-    <div>
-        <h3>Hi React</h3>
-    </div>,
+    <AppRouter />,
     document.getElementById('root')
 );
