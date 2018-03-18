@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import initStore from '../store/appStore';
-import MainPage from './MainPage.jsx';
+import HomePage from './HomePage.jsx';
 
 const store = initStore();
 
@@ -13,7 +13,7 @@ const AppRouter = props => (
                 <Route
                     exact
                     path='/'
-                    component={MainPage}
+                    component={HomePage}
                 />
             </Switch>
         </BrowserRouter>
