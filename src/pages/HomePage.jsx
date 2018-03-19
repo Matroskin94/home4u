@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import changeState from '../components/HomePage/actions';
-import Header from '../components/HomePage/Header.jsx';
+import TopMenu from '../components/TopMenu/TopMenu.jsx';
 import Content from '../components/HomePage/Content.jsx';
 
 class HomePage extends PureComponent {
@@ -23,8 +23,8 @@ class HomePage extends PureComponent {
     render() {
         return (
             <div>
-                <Header homeState={this.props.homeState} />
-                <Content onButtonClick={this.handleClick} />
+                <TopMenu />
+                <Content />
             </div>
         );
     }
