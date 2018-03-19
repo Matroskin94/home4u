@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Content = props => (
     <div>
-        <h2>Очень полезная штука</h2>
-        <p>Про которую я пока не могу толком ничего рассказать</p>
-        <button onClick={props.onButtonClick} >Уже хочу!!!</button>
+        <h2>Home for you</h2>
+        <h3>Приложение для мониторинга и управления системой домашней автоматизации</h3>
+        <p>
+            Для работы с системой <Link to='/login'>Войдите</Link> или <Link to='/registration'>Зарегистрируйтесь</Link>
+        </p>
     </div>
 );
 
