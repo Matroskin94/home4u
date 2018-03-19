@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import changeState from '../components/HomePage/actions';
 import TopMenu from '../components/TopMenu/TopMenu.jsx';
 import Content from '../components/HomePage/Content.jsx';
+import Footer from '../components/HomePage/Footer.jsx';
 
 class HomePage extends PureComponent {
     static propTypes = {
@@ -25,6 +26,7 @@ class HomePage extends PureComponent {
             <div>
                 <TopMenu />
                 <Content />
+                <Footer />
             </div>
         );
     }

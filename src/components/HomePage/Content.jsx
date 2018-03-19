@@ -1,8 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withStyles } from 'material-ui/styles';
+import PropTypes from 'prop-types';
+
+const stylesJS = theme => (
+    {
+        container: {
+            width: '75%',
+            margin: 'auto'
+        }
+    }
+);
 
 const Content = props => (
-    <div>
+    <div className={props.classes.container}>
         <h2>Home for you</h2>
         <h3>Приложение для мониторинга и управления системой домашней автоматизации</h3>
         <p>
@@ -11,4 +22,8 @@ const Content = props => (
     </div>
 );
 
-export default Content;
+Content.propTypes = {
+    classes: PropTypes.object.isRequired
+};
+
+export default withStyles(stylesJS)(Content);
