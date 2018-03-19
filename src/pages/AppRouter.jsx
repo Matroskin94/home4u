@@ -19,6 +19,7 @@ const AppRouter = props => (
                 />
                 <Route path='/registration' component={RegistrationPage} />
                 <Route path='/login' component={LogInPage} />
+
             </Switch>
         </BrowserRouter>
     </Provider>
