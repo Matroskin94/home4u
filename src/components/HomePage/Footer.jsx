@@ -10,21 +10,17 @@ const stylesJS = theme => (
             margin: 'auto'
         },
         footer: {
-            top: 'auto',
-            bottom: 0,
-            height: 64
+            flexShrink: 0
         }
     }
 );
 
 const Footer = props => (
-    <div>
-        <AppBar className={props.classes.footer}>
-            <Toolbar className={props.classes.container}>
-                <p>Copyright © 2017-2018 All rights reserved</p>
-            </Toolbar>
-        </AppBar>
-    </div>
+    <AppBar position='static' className={props.classes.footer}>
+        <Toolbar className={props.classes.container}>
+            <p>Copyright © 2017-2018 All rights reserved</p>
+        </Toolbar>
+    </AppBar>
 );
 
 Footer.propTypes = {

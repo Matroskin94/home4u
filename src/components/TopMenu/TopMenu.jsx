@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { AppBar, Toolbar, Button, Typography } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
-import styles from './TopMenu.css';
 
 const stylesJS = theme => (
     {
@@ -33,7 +32,7 @@ const TopMenu = props => (
             <Link className={props.classes.link} to='/registration'>
                 <Button color='inherit'>Регистрация</Button>
             </Link>
-            <Link className={props.classes.link} to='/'>
+            <Link className={props.classes.link} to='/login'>
                 <Button color='inherit'>Вход</Button>
             </Link>
         </Toolbar>
