@@ -6,8 +6,6 @@ import { withStyles } from 'material-ui/styles';
 import withWidth from 'material-ui/utils/withWidth';
 import compose from 'recompose/compose';
 import Hidden from 'material-ui/Hidden';
-import IconButton from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
 
 const stylesJS = theme => (
     {
@@ -49,11 +47,6 @@ const TopMenu = props => (
                 <Link className={props.classes.link} to='/login'>
                     <Button color='inherit'>Вход</Button>
                 </Link>
-            </Hidden>
-            <Hidden smUp>
-                <IconButton color='inherit' aria-label='Menu'>
-                    <MenuIcon />
-                </IconButton>
             </Hidden>
         </Toolbar>
     </AppBar>
