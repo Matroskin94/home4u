@@ -1,0 +1,68 @@
+.hiddenMenu {
+  display: block;
+  position: fixed;
+  list-style:none;
+  padding: 10px;
+  margin: 0;
+  box-sizing: border-box;
+  width: 160px;
+  background: rgba(26,35,126, 0.95);
+  height: 100vh;
+  top: 0;
+  right: -160px;
+  transition: right .2s;
+  z-index: 1200;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.btnMenu {
+  color: #fff;
+  padding: 5px;
+  position: fixed;
+  top: 10px;
+  right: 5px;
+  cursor: pointer;
+  transition: right .23s;
+  z-index: 1300;
+  width: 25px;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.btnMenu span {
+  display: block;
+  height: 3px;
+  background-color: #fff;
+  margin: 5px 0 0;
+  transition: all .1s linear .1s;
+  position: relative;
+}
+.btnMenu span.first {
+  margin-top: 0;
+}
+
+.hiddenMenuTicker {
+  display: none;
+}
+
+.hiddenMenuTicker:checked ~ .btnMenu {
+  background: rgb(26,35,126);
+  right: 120px;
+}
+
+.hiddenMenuTicker:checked ~ .hiddenMenu {
+  right: 0px;
+}
+
+.hiddenMenuTicker:checked ~ .btnMenu span.first {
+  transform: rotate(45deg);
+  top: 8px;
+}
+.hiddenMenuTicker:checked ~ .btnMenu span.second {
+  opacity: 0;
+}
+.hiddenMenuTicker:checked ~ .btnMenu span.third {
+  transform: rotate(-45deg);
+  top: -8px;
+}

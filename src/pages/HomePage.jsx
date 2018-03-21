@@ -4,16 +4,22 @@ import { connect } from 'react-redux';
 import changeState from '../components/HomePage/actions';
 import TopMenu from '../components/TopMenu/TopMenu.jsx';
 import Content from '../components/HomePage/Content.jsx';
+import Footer from '../components/HomePage/Footer.jsx';
+import homePageWrapper from '../components/HomePage/HomePageWrapper.jsx';
+import HiddenMenu from '../components/TopMenu/HiddenMenu.jsx';
 
+@homePageWrapper()
 class HomePage extends PureComponent {
     static propTypes = {
         changeState: PropTypes.func,
-        homeState: PropTypes.bool
+        homeState: PropTypes.bool,
+        styles: PropTypes.object
     };
 
     static defaultProps = {
         changeState: {},
-        homeState: false
+        homeState: false,
+        styles: {}
     };
 
     handleClick = () => {
@@ -21,10 +27,14 @@ class HomePage extends PureComponent {
     }
 
     render() {
+        const styles = { ...this.props.styles };
+
         return (
-            <div>
+            <div className={styles.wrapper}>
                 <TopMenu />
                 <Content />
+                <Footer />
+                <HiddenMenu />
             </div>
         );
     }

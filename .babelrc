@@ -1,7 +1,11 @@
 {
     "presets": [
         ["es2015", { "loose": true, "modules": false }],
-        "react"
+        "react",
+        "stage-1"
     ],
-    "plugins": ["transform-class-properties"]
+    "plugins": [
+        "transform-class-properties",
+        "transform-decorators-legacy"
+    ]
 }
