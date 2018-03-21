@@ -3,33 +3,7 @@ import { Link } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import { Typography } from 'material-ui';
 import PropTypes from 'prop-types';
-
-const stylesJS = theme => (
-    {
-        container: {
-            flex: '1 0 auto',
-            width: '75%',
-            margin: '20px auto',
-            [theme.breakpoints.down('xs')]: {
-                width: '90%'
-            }
-        },
-        headerFont: {
-            [theme.breakpoints.down('xs')]: {
-                fontSize: '2rem'
-            }
-        },
-        descriptionFont: {
-            [theme.breakpoints.down('xs')]: {
-                fontSize: '1.2rem',
-                textAlign: 'justify'
-            }
-        },
-        alignTop10: {
-            marginTop: '10px'
-        }
-    }
-);
+import stylesJS from './stylesJSS/ContentStylesJS';
 
 const Content = ({ classes }) => (
     <div className={classes.container}>

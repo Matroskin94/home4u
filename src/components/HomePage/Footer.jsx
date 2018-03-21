@@ -2,22 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, Toolbar } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
-
-const stylesJS = theme => (
-    {
-        container: {
-            width: '75%',
-            margin: 'auto',
-            [theme.breakpoints.down('xs')]: {
-                width: '90%',
-                fontSize: 14
-            }
-        },
-        footer: {
-            flexShrink: 0
-        }
-    }
-);
+import stylesJS from './stylesJSS/FooterStylesJS';
 
 const Footer = props => (
     <AppBar position='static' className={props.classes.footer}>

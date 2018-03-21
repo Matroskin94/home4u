@@ -18,9 +18,9 @@
 
 .btnMenu {
   color: #fff;
-  padding: 2px 5px 5px 5px;
+  padding: 5px;
   position: fixed;
-  top: 9px;
+  top: 10px;
   right: 5px;
   cursor: pointer;
   transition: right .23s;
@@ -32,7 +32,7 @@
 
 .btnMenu span {
   display: block;
-  height: 4px;
+  height: 3px;
   background-color: #fff;
   margin: 5px 0 0;
   transition: all .1s linear .1s;
@@ -57,12 +57,12 @@
 
 .hiddenMenuTicker:checked ~ .btnMenu span.first {
   transform: rotate(45deg);
-  top: 9px;
+  top: 8px;
 }
 .hiddenMenuTicker:checked ~ .btnMenu span.second {
   opacity: 0;
 }
 .hiddenMenuTicker:checked ~ .btnMenu span.third {
   transform: rotate(-45deg);
-  top: -9px;
+  top: -8px;
 }

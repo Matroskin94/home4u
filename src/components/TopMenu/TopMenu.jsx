@@ -6,29 +6,7 @@ import { withStyles } from 'material-ui/styles';
 import withWidth from 'material-ui/utils/withWidth';
 import compose from 'recompose/compose';
 import Hidden from 'material-ui/Hidden';
-
-const stylesJS = theme => (
-    {
-        container: {
-            width: '75%',
-            margin: 'auto',
-            [theme.breakpoints.down('xs')]: {
-                width: '90%'
-
-            }
-        },
-        link: {
-            color: 'white'
-        },
-        flex: {
-            flex: '1 0 auto'
-        },
-        root: {
-            [theme.breakpoints.down('xs')]: {
-            }
-        }
-    }
-);
+import stylesJS from './topMenuStylesJS';
 
 const TopMenu = props => (
     <AppBar position='static'>
