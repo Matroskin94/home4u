@@ -1,11 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import RegistrationForm from '../components/RegistrationPage/RegistrationForm.jsx';
+
 
 const Registration = () => (
-    <div>
-        <Link to=''>Назад</Link>
-        <h1>Страница Регистрации</h1>
-    </div>
+    <RegistrationForm />
 );
 
 export default Registration;
