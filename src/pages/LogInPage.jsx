@@ -1,11 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import LogInForm from '../components/LogInPage/LogInForm.jsx';
 
 const LogInPage = () => (
-    <div>
-        <Link to='/'>Назад</Link>
-        <h1>Страница Авторизации</h1>
-    </div>
+    <LogInForm />
 );
 
 export default LogInPage;
