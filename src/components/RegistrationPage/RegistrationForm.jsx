@@ -6,7 +6,6 @@ import Typography from 'material-ui/Typography';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import stylesJS from './RegistrationFormStylesJS';
-
 const RegistrationForm = ({ classes }) => (
     <div className={classes.container}>
         <Paper className={classes.paper}>
