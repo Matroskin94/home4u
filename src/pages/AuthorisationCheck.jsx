@@ -7,7 +7,7 @@ const AuthorisationCheck = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
         render={props => (
-            !checkAccessPermition() ? (
+            checkAccessPermition() ? (
                 <Component {...props} />
             ) : (
                 <Redirect

@@ -1,26 +1,36 @@
 import React, { PureComponent } from 'react';
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import TextField from 'material-ui/TextField';
-import Button from 'material-ui/Button';
-import { LockOutline, AssignmentInd } from 'material-ui-icons';
+
+import
+{
+    Paper, withStyles, TextField, Typography, Button,
+    IconButton
+} from 'material-ui';
+import
+{
+    LockOutline, AssignmentInd, Visibility,
+    VisibilityOff
+} from 'material-ui-icons';
+
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 import { FormControl } from 'material-ui/Form';
-import Visibility from 'material-ui-icons/Visibility';
-import VisibilityOff from 'material-ui-icons/VisibilityOff';
-import IconButton from 'material-ui/IconButton';
-import stylesJS from './LoginFormStylesJS';
+import PropTypes from 'prop-types';
 
+import stylesJS from './LoginFormStylesJS';
+import loginHOC from './LoginHOC.jsx';
+import { noop } from '../../utils/globalUtils';
+
+@loginHOC()
 class LogInForm extends PureComponent {
     static propTypes = {
-        classes: PropTypes.object.isRequired
+        classes: PropTypes.object.isRequired,
+        onEnterClick: PropTypes.func
+    };
+    static defaultProps = {
+        onEnterClick: noop
     };
     state = {
         password: '',
-        showPassword: '',
-        userLogin: ''
+        showPassword: false
     };
 
     handleChange = prop => event => {
@@ -34,6 +44,10 @@ class LogInForm extends PureComponent {
     handleClickShowPasssword = () => {
         this.setState({ showPassword: !this.state.showPassword });
     };
+
+    handleEnterClick = () => {
+        this.props.onEnterClick({ ...this.state });
+    }
 
 
     render() {
@@ -83,6 +97,7 @@ class LogInForm extends PureComponent {
                             variant='raised'
                             color='primary'
                             className={classes.button}
+                            onClick={this.handleEnterClick}
                         >
                             Войти
                         </Button>
