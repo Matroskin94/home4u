@@ -29,7 +29,8 @@ class LogInForm extends PureComponent {
         onEnterClick: noop
     };
     state = {
-        password: '',
+        userPassword: '',
+        userLogin: '',
         showPassword: false
     };
 
@@ -46,7 +47,10 @@ class LogInForm extends PureComponent {
     };
 
     handleEnterClick = () => {
-        this.props.onEnterClick({ ...this.state });
+        const { userPassword, userLogin } = { ...this.state };
+
+        console.log(this.state);
+        this.props.onEnterClick({ userPassword, userLogin });
     }
 
 
@@ -78,7 +82,7 @@ class LogInForm extends PureComponent {
                                 id='loginPassword'
                                 type={this.state.showPassword ? 'text' : 'password'}
                                 value={this.state.password}
-                                onChange={this.handleChange('password')}
+                                onChange={this.handleChange('userPassword')}
                                 endAdornment={
                                     <InputAdornment position='end'>
                                         <IconButton

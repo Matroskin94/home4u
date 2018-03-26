@@ -1,0 +1,3 @@
+export const USER_CHECK = 'USER_CHECK';
+export const USER_ENTERED = 'USER_ENTERED';
+export const USER_REGISTRATION = 'USER_REGISTRATION';
