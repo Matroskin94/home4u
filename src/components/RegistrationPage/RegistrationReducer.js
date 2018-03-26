@@ -1,4 +1,4 @@
-import { USER_REGISTRATION } from '../../constants/constants';
+import { REGISTRATION_REQUEST } from '../../constants/constants';
 
 const initialState = {
     userLogin: ''
@@ -6,7 +6,7 @@ const initialState = {
 
 export default function LoginReducer(state = initialState, action) {
     switch (action.type) {
-        case USER_REGISTRATION: {
+        case REGISTRATION_REQUEST: {
             return {
                 userLogin: action.payload.userLogin,
                 ...state

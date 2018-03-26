@@ -23,7 +23,7 @@ import { noop } from '../../utils/globalUtils';
 class LogInForm extends PureComponent {
     static propTypes = {
         classes: PropTypes.object.isRequired,
-        onEnterClick: PropTypes.func
+        onEnterClick: PropTypes.func // Функция из LoginHOC для авторизации пользователя
     };
     static defaultProps = {
         onEnterClick: noop
@@ -49,7 +49,6 @@ class LogInForm extends PureComponent {
     handleEnterClick = () => {
         const { userPassword, userLogin } = { ...this.state };
 
-        console.log(this.state);
         this.props.onEnterClick({ userPassword, userLogin });
     }
 

@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import changeHistory from '../HOC/ChangeHistory.jsx';
 import { noop } from '../../utils/globalUtils';
-import checkUserAction from './LoginActions';
+import { loginRequestAction, loginSuccessAction } from './LoginActions';
 
 function mapDispatchToProps(dispatch) {
     return {
-        checkUser: user => dispatch(checkUserAction(user))
+        loginUser: user => dispatch(loginRequestAction(user)),
+        enterUser: user => dispatch(loginSuccessAction(user))
     };
 }
 
@@ -16,16 +17,20 @@ function mapDispatchToProps(dispatch) {
 export default () => WrappedComponent => {
     class LoginHOC extends PureComponent {
         static propTypes = {
-            historyPush: PropTypes.func,
-            checkUser: PropTypes.func
+            historyPush: PropTypes.func, // Функция из HOC changeHistory для перехода на страницы
+            loginUser: PropTypes.func,
+            enterUser: PropTypes.func
         };
         static defaultProps = {
             historyPush: noop,
-            checkUser: noop
+            loginUser: noop,
+            enterUser: noop
         };
         handleEnterClick = user => {
-            this.props.checkUser(user);
-            this.props.historyPush({ url: '/myhome' });
+            this.props.loginUser(user).then(response => {
+                this.props.enterUser(user);
+                this.props.historyPush({ url: '/myhome' });
+            });
         }
         render() {
             return <WrappedComponent

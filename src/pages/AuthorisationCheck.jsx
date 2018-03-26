@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
-import checkAccessPermition from './CheckAccessPermition.jsx';
+import { connect } from 'react-redux';
 
 const AuthorisationCheck = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
         render={props => (
-            checkAccessPermition() ? (
+            rest.isAuthenticated ? (
                 <Component {...props} />
             ) : (
                 <Redirect
@@ -20,12 +20,20 @@ const AuthorisationCheck = ({ component: Component, ...rest }) => (
     />
 );
 
+function mapStateToProps(state) {
+    return {
+        isAuthenticated: state.loginReducer.isAuthenticated
+    };
+}
+
 AuthorisationCheck.propTypes = {
-    component: PropTypes.func
+    component: PropTypes.func,
+    isAuthenticated: PropTypes.bool
 };
 
 AuthorisationCheck.defaultProps = {
-    component: {}
+    component: {},
+    isAuthenticated: false
 };
 
-export default AuthorisationCheck;
+export default connect(mapStateToProps)(AuthorisationCheck);
