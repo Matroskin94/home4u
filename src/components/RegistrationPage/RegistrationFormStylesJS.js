@@ -16,6 +16,7 @@ const stylesJS = theme => ({
         }
     },
     buttonContainer: {
+        marginTop: 10,
         display: 'flex'
     },
     button: {
@@ -24,6 +25,7 @@ const stylesJS = theme => ({
     textField: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
+        marginTop: 0,
         width: '45%',
         [theme.breakpoints.down('xs')]: {
             width: '90%'

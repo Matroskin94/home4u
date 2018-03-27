@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import HomePageReducer from './HomePageReducer';
+import { reducer as formReducer } from 'redux-form';
+import RegistrationReducer from '../components/RegistrationPage/RegistrationReducer';
 
 export default combineReducers({
-    homePageReducer: HomePageReducer
+    registrationReducer: RegistrationReducer,
+    form: formReducer
 });
