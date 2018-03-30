@@ -16,15 +16,20 @@ class HomePage extends PureComponent {
         styles: {}
     };
 
+    menuItems = [
+        { itemText: 'Вход', itemLink: '/login' },
+        { itemText: 'Регистрация', itemLink: '/registration' }
+    ];
+
     render() {
         const styles = { ...this.props.styles };
 
         return (
             <div className={styles.wrapper}>
-                <TopMenu />
+                <TopMenu menuItems={this.menuItems} />
                 <Content />
                 <Footer />
-                <HiddenMenu />
+                <HiddenMenu menuItems={this.menuItems} />
             </div>
         );
     }

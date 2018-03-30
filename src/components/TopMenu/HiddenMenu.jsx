@@ -1,14 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { MenuList, MenuItem } from 'material-ui/Menu';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { MenuList } from 'material-ui/Menu';
 import Paper from 'material-ui/Paper';
-import { ListItemText } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
-import { Typography } from 'material-ui';
 import Hidden from 'material-ui/Hidden';
 import stylesCSS from './hiddenMenu.css';
+import HiddenMenuItem from './MenuItems/HiddenMenuItem.jsx';
 
-const HiddenMenu = () => (
+const HiddenMenu = ({ menuItems }) => (
     <Hidden smUp>
         <input
             type='checkbox'
@@ -23,29 +22,24 @@ const HiddenMenu = () => (
         <div className={stylesCSS.hiddenMenu}>
             <Paper>
                 <MenuList>
-                    <Link to='/login'>
-                        <MenuItem>
-                            <ListItemText>
-                                <Typography align='right'>
-                                    Вход
-                                </Typography>
-                            </ListItemText>
-                        </MenuItem>
-                    </Link>
-                    <Divider />
-                    <Link to='/registration'>
-                        <MenuItem>
-                            <ListItemText>
-                                <Typography align='right'>
-                                    Регистрация
-                                </Typography>
-                            </ListItemText>
-                        </MenuItem>
-                    </Link>
+                    {menuItems.map(item => (
+                        <Fragment key={item.itemText}>
+                            <HiddenMenuItem item={item} />
+                            <Divider />
+                        </Fragment>
+                    ))}
                 </MenuList>
             </Paper>
         </div>
     </Hidden>
 );
+
+HiddenMenu.propTypes = {
+    menuItems: PropTypes.array
+};
+HiddenMenu.defaultProps = {
+    menuItems: []
+};
+
 
 export default HiddenMenu;

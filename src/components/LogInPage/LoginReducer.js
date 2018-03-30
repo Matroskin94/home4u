@@ -2,7 +2,7 @@ import { LOGIN_REQUEST, LOGIN_SUCCESS } from '../../constants/constants';
 
 const initialState = {
     isFetching: false,
-    isAuthenticated: false,
+    isAuthenticated: true,
     userPassword: '',
     userLogin: ''
 };
