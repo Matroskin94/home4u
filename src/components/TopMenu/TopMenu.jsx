@@ -17,7 +17,7 @@ const TopMenu = ({ classes, menuItems }) => (
                 color='inherit'
                 className={classes.flex}
             >
-                <Link className={classes.link} to='/'>Home4U</Link>
+                <Link className={classes.link} to='/myhome'>Home4U</Link>
             </Typography>
             <Hidden xsDown>
                 {menuItems.map(item => (
