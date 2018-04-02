@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { AppBar, Toolbar, Typography } from 'material-ui';
@@ -9,36 +9,40 @@ import Hidden from 'material-ui/Hidden';
 import stylesJS from './topMenuStylesJS';
 import MenuItem from './MenuItems/MenuItem.jsx';
 
-const TopMenu = ({ classes, menuItems }) => (
-    <AppBar position='static'>
-        <Toolbar className={classes.container}>
-            <Typography
-                variant='title'
-                color='inherit'
-                className={classes.flex}
-            >
-                <Link className={classes.link} to='/myhome'>Home4U</Link>
-            </Typography>
-            <Hidden xsDown>
-                {menuItems.map(item => (
-                    <MenuItem
-                        key={`${item.itemText}nothidden`}
-                        item={item}
-                        style={classes}
-                    />
-                ))}
-            </Hidden>
-        </Toolbar>
-    </AppBar>
-);
+class TopMenu extends PureComponent {
+    static propTypes = {
+        classes: PropTypes.object.isRequired,
+        menuItems: PropTypes.array
+    };
 
-TopMenu.propTypes = {
-    classes: PropTypes.object.isRequired,
-    menuItems: PropTypes.array
-};
+    static defaultProps = {
+        menuItems: []
+    };
 
-TopMenu.defaultProps = {
-    menuItems: []
-};
+    render() {
+        return (
+            <AppBar position='static'>
+                <Toolbar className={this.props.classes.container}>
+                    <Typography
+                        variant='title'
+                        color='inherit'
+                        className={this.props.classes.flex}
+                    >
+                        <Link className={this.props.classes.link} to='/myhome'>Home4U</Link>
+                    </Typography>
+                    <Hidden xsDown>
+                        {this.props.menuItems.map(item => (
+                            <MenuItem
+                                key={`${item.itemText}nothidden`}
+                                item={item}
+                                style={this.props.classes}
+                            />
+                        ))}
+                    </Hidden>
+                </Toolbar>
+            </AppBar>
+        );
+    }
+}
 
 export default compose(withStyles(stylesJS), withWidth())(TopMenu);
