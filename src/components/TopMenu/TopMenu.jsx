@@ -21,7 +21,7 @@ class TopMenu extends PureComponent {
 
     render() {
         return (
-            <AppBar position='static'>
+            <AppBar position='fixed'>
                 <Toolbar className={this.props.classes.container}>
                     <Typography
                         variant='title'
