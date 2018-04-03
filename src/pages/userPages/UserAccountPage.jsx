@@ -1,7 +1,8 @@
 import React from 'react';
+import Content from '../../components/UserAccountPage/Content.jsx';
 
 const HomeAccountPage = props => (
-    <h1>Account information</h1>
+    <Content />
 );
 
 export default HomeAccountPage;

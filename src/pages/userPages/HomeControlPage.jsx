@@ -1,7 +1,8 @@
 import React from 'react';
+import Content from '../../components/HomeControlPage/Content.jsx';
 
-const HomeAccountPage = props => (
-    <h1>Control information</h1>
+const HomeControlPage = props => (
+    <Content />
 );
 
-export default HomeAccountPage;
+export default HomeControlPage;

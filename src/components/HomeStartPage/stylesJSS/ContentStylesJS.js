@@ -2,10 +2,12 @@ const stylesJS = theme => (
     {
         container: {
             flex: '1 0 auto',
-            width: '75%',
-            margin: '70px auto 20px auto',
+            width: '95%',
+            margin: '80px auto 20px auto',
+            padding: '12px',
             [theme.breakpoints.down('xs')]: {
-                width: '90%'
+                width: '90%',
+                margin: '70px auto 20px auto'
             }
         },
         headerFont: {
@@ -19,8 +21,19 @@ const stylesJS = theme => (
                 textAlign: 'justify'
             }
         },
-        alignTop10: {
-            marginTop: '10px'
+        media: {
+            paddingTop: '10px',
+            height: 200,
+            backgroundSize: 'auto'
+        },
+        card: {
+            boxSizing: 'content-box',
+            minHeight: 370,
+            position: 'relative'
+        },
+        cardActions: {
+            position: 'absolute',
+            bottom: 0
         }
     }
 );
