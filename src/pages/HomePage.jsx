@@ -30,5 +30,4 @@ class HomePage extends PureComponent {
     }
 }
 
-
 export default HomePage;
