@@ -44,9 +44,11 @@ const Content = ({ classes }) => (
                         </Typography>
                     </CardContent>
                     <CardActions className={classes.cardActions}>
-                        <Button size='small' color='primary'>
-                            Профиль
-                        </Button>
+                        <Link to='/myhome/account'>
+                            <Button size='small' color='primary'>
+                                Профиль
+                            </Button>
+                        </Link>
                     </CardActions>
                 </Card>
             </Grid>
@@ -75,9 +77,11 @@ const Content = ({ classes }) => (
                         </Typography>
                     </CardContent>
                     <CardActions className={classes.cardActions}>
-                        <Button size='small' color='primary'>
-                            Управление
-                        </Button>
+                        <Link to='/myhome/control'>
+                            <Button size='small' color='primary'>
+                                Управление
+                            </Button>
+                        </Link>
                     </CardActions>
                 </Card>
             </Grid>
