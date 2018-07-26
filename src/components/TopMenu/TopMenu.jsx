@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { AppBar, Toolbar, Typography } from 'material-ui';
-import { withStyles } from 'material-ui/styles';
-import withWidth from 'material-ui/utils/withWidth';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import withWidth from '@material-ui/core/withWidth';
 import compose from 'recompose/compose';
-import Hidden from 'material-ui/Hidden';
+import Hidden from '@material-ui/core/Hidden';
 import stylesJS from './topMenuStylesJS';
 import MenuItem from './MenuItems/MenuItem.jsx';
 

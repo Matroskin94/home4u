@@ -2,17 +2,24 @@ import React, { PureComponent } from 'react';
 
 import
 {
-    Paper, withStyles, TextField, Typography, Button,
-    IconButton
-} from 'material-ui';
+    Paper,
+    withStyles,
+    TextField,
+    Typography,
+    Button,
+    IconButton,
+    Input,
+    InputLabel,
+    InputAdornment
+} from '@material-ui/core';
 import
 {
-    LockOutline, AssignmentInd, Visibility,
+    LockOutlined,
+    AssignmentInd,
+    Visibility,
     VisibilityOff
-} from 'material-ui-icons';
-
-import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
-import { FormControl } from 'material-ui/Form';
+} from '@material-ui/icons';
+import FormControl from '@material-ui/core/FormControl';
 import PropTypes from 'prop-types';
 
 import stylesJS from './LoginFormStylesJS';
@@ -65,7 +72,7 @@ class LogInForm extends PureComponent {
                         <TextField
                             id='userLogin'
                             label='Введите логин'
-                            placeholder='Логин'
+                            placeholder=''
                             className={classes.textField}
                             margin='normal'
                             onChange={this.handleChange('userLogin')}
@@ -73,7 +80,7 @@ class LogInForm extends PureComponent {
                     </div>
 
                     <div className={classes.flexContainer}>
-                        <LockOutline className={classes.icon} />
+                        <LockOutlined className={classes.icon} />
                         <FormControl margin='normal' className={classes.textField}>
 
                             <InputLabel htmlFor='loginPassword'>Password</InputLabel>

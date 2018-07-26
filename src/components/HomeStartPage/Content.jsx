@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withStyles } from 'material-ui/styles';
-import { Typography, Paper, Grid } from 'material-ui';
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
-import Button from 'material-ui/Button';
+import { withStyles } from '@material-ui/core//styles';
+import { Typography, Paper, Grid } from '@material-ui/core';
+import Card, { CardActions, CardContent, CardMedia } from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
+
 import stylesJS from './stylesJSS/ContentStylesJS';
 import homeIcon from './img/house(200).png';
 import homeSettingsIcon from './img/houseCustoming(200).png';

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Button } from 'material-ui';
+import { Button } from '@material-ui/core';
 
 const MenuItem = ({ item, style }) => (
     <Link

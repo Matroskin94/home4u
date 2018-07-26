@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { MenuList } from 'material-ui/Menu';
-import Paper from 'material-ui/Paper';
-import Divider from 'material-ui/Divider';
-import Hidden from 'material-ui/Hidden';
+import { MenuList } from '@material-ui/core/Menu';
+import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
+import Hidden from '@material-ui/core/Hidden';
 import stylesCSS from './hiddenMenu.css';
 import HiddenMenuItem from './MenuItems/HiddenMenuItem.jsx';
 
