@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const MenuItem = ({ item, style }) => (
     <Link
         className={style.link}
         to={item.itemLink}
     >
-        <Button color='inherit'>{item.itemText}</Button>
+        <Button color='inherit'>
+            {item.itemText}
+        </Button>
     </Link>
 );
 

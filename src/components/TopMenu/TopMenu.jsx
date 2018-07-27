@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
 import compose from 'recompose/compose';
 import Hidden from '@material-ui/core/Hidden';
+
 import stylesJS from './topMenuStylesJS';
 import MenuItem from './MenuItems/MenuItem.jsx';
 

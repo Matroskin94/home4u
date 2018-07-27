@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { MenuList } from '@material-ui/core/Menu';
-import Paper from '@material-ui/core/Paper';
-import Divider from '@material-ui/core/Divider';
-import Hidden from '@material-ui/core/Hidden';
+import { Divider, Hidden, Paper, MenuList } from '@material-ui/core';
+
 import stylesCSS from './hiddenMenu.css';
 import HiddenMenuItem from './MenuItems/HiddenMenuItem.jsx';
 
@@ -23,10 +21,10 @@ const HiddenMenu = ({ menuItems }) => (
             <Paper>
                 <MenuList>
                     {menuItems.map(item => (
-                        <Fragment key={item.itemText}>
+                        <div key={item.itemText}>
                             <HiddenMenuItem item={item} />
                             <Divider />
-                        </Fragment>
+                        </div>
                     ))}
                 </MenuList>
             </Paper>

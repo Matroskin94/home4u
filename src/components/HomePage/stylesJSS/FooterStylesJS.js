@@ -9,7 +9,7 @@ const stylesJS = theme => (
             }
         },
         footer: {
-            flexShrink: 0
+            flexShrink: 0,
         }
     }
 );

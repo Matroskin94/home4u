@@ -1,9 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withStyles } from '@material-ui/core//styles';
-import { Typography, Paper, Grid } from '@material-ui/core';
-import Card, { CardActions, CardContent, CardMedia } from '@material-ui/core/Card';
-import Button from '@material-ui/core/Button';
+// import { withStyles } from '@material-ui/core/styles';
+import {
+    Button,
+    Card,
+    CardActions,
+    CardContent,
+    CardMedia,
+    Typography,
+    Paper,
+    Grid,
+    withStyles
+} from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 import stylesJS from './stylesJSS/ContentStylesJS';
