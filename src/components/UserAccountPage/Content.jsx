@@ -1,13 +1,20 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
-import { Typography } from 'material-ui';
+import { withStyles } from '@material-ui/core/styles';
+import { Typography, Paper, Card, CardContent, CardActions } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import stylesJS from './stylesJSS/ContentStylesJS';
 
 const Content = ({ classes }) => (
-    <div className={classes.container}>
-        <Typography variant='display1'>Account page</Typography>
-    </div>
+    <Paper className={classes.container}>
+    	<div>
+	        <Typography variant='display1'>Testing of termometer</Typography>
+	        <Card className={classes.termometerContainer}>
+	        	<CardContent>
+	        		<p>Card Content place for termometer</p>
+	        	</CardContent>
+	        </Card>
+	    </div>
+    </Paper>
 );
 
 Content.propTypes = {

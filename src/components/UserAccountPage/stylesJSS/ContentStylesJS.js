@@ -4,6 +4,7 @@ const stylesJS = theme => (
             flex: '1 0 auto',
             width: '75%',
             margin: '80px auto 20px auto',
+            padding: '10px',
             [theme.breakpoints.down('xs')]: {
                 width: '90%',
                 margin: '70px auto 20px auto'
@@ -22,6 +23,10 @@ const stylesJS = theme => (
         },
         alignTop10: {
             marginTop: '10px'
+        },
+        termometerContainer: {
+            flex: '1 0 auto',
+            width: '50%'
         }
     }
 );

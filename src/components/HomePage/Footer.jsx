@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { AppBar, Toolbar, Typography } from 'material-ui';
-import { withStyles } from 'material-ui/styles';
+import { AppBar, Toolbar, Typography } from '@material-ui/core/';
+import { withStyles } from '@material-ui/core/styles';
+
 import stylesJS from './stylesJSS/FooterStylesJS';
 
 class Footer extends PureComponent {

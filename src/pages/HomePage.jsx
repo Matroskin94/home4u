@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+
 import TopMenu from '../components/TopMenu/TopMenu.jsx';
 import Content from '../components/HomePage/Content.jsx';
 import Footer from '../components/HomePage/Footer.jsx';

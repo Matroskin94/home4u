@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import changeHistory from '../HOC/ChangeHistory.jsx';
 import { noop } from '../../utils/globalUtils';
 import { loginRequestAction, loginSuccessAction } from './LoginActions';

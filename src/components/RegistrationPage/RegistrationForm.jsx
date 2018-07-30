@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
-import TextField from 'material-ui/TextField';
-import Button from 'material-ui/Button';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
+
 import stylesJS from './RegistrationFormStylesJS';
 import validate from '../../utils/validateForm';
 import RenderTextField from './RenderTextField.jsx';
@@ -36,7 +37,6 @@ let RegistrationForm = ({
                 <Field
                     name='login'
                     id='login'
-                    placeholder='Login'
                     label='Логин *'
                     component={RenderTextField}
                     formStyle={classes.textField}
@@ -45,7 +45,6 @@ let RegistrationForm = ({
                     name='email'
                     id='eMail'
                     label='e-mail *'
-                    placeholder='e-mail *'
                     margin='normal'
                     component={RenderTextField}
                     formStyle={classes.textField}
@@ -72,7 +71,6 @@ let RegistrationForm = ({
                     name='name'
                     id='name'
                     label='Имя'
-                    placeholder='Имя'
                     className={classes.textField}
                     margin='normal'
                 />
@@ -80,7 +78,6 @@ let RegistrationForm = ({
                     name='surname'
                     id='surname'
                     label='Фамилия'
-                    placeholder='Фамилия'
                     className={classes.textField}
                     margin='normal'
                 />
@@ -89,7 +86,6 @@ let RegistrationForm = ({
                     id='phone'
                     label='Телефон'
                     type='tel'
-                    placeholder='Телефон'
                     className={classes.textField}
                     margin='normal'
                 />
