@@ -17,12 +17,6 @@ const sentRequest = values => {
     console.log('SUBMIT', values);
 };
 
-function mapStateToProps(state) {
-    return {
-        formValues: selector(state, ...fieldsArray)
-    };
-}
-
 let RegistrationForm = ({
     classes,
     handleSubmit
@@ -107,6 +101,12 @@ RegistrationForm.propTypes = {
 RegistrationForm.defaultProps = {
     handleSubmit: {}
 };
+
+function mapStateToProps(state) {
+    return {
+        formValues: selector(state, ...fieldsArray)
+    };
+}
 
 RegistrationForm = reduxForm({
     form: 'register',

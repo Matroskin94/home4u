@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-
+import { connect } from 'react-redux';
 
 import { withStyles } from '@material-ui/core/styles';
 import {
@@ -22,20 +22,25 @@ import stylesJS from './stylesJSS/ContentStylesJS';
 
 class Content extends PureComponent {
     static propTypes = {
-        classes: PropTypes.object.isRequired
+        classes: PropTypes.object.isRequired,
+        userInfo: PropTypes.object
+    };
+
+    static defaultProps = {
+        userInfo: {
+            name: '',
+            surname: '',
+            phone: '',
+            email: '',
+            userLogin: ''
+        }
     };
 
     state = {
         openModals: {
             [EDIT_PROFILE_MODAL]: false
         },
-        userInfo: {
-            name: 'Bacя',
-            surname: 'Ухмылкин',
-            phone: '9379992',
-            email: 'vasia_fighter@gmail.com',
-            userLogin: 'vasia99'
-        }
+        userInfo: this.props.userInfo
     };
 
     onProfileChangesSave = values => {
@@ -96,4 +101,22 @@ class Content extends PureComponent {
     }
 }
 
-export default withStyles(stylesJS)(Content);
+function mapStateToProps(state) {
+    return {
+        userInfo: state.loginReducer
+    };
+}
+
+/* AuthorisationCheck.propTypes = {
+    component: PropTypes.func,
+    isAuthenticated: PropTypes.bool
+};
+
+AuthorisationCheck.defaultProps = {
+    component: {},
+    isAuthenticated: false
+};
+
+export default connect(mapStateToProps)(AuthorisationCheck); */
+
+export default connect(mapStateToProps)(withStyles(stylesJS)(Content));

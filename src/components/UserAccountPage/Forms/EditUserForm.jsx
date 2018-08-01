@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm, Form } from 'redux-form';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -19,16 +20,16 @@ let EditUserForm = ({ classes, handleSubmit, onSaveChanges }) => (
     >
         <div className={classes.rowContainer}>
             <Field
-                name='userName'
-                id='userName'
+                name='name'
+                id='name'
                 label='Имя'
                 margin='normal'
                 component={RenderFormTextField}
                 className={classes.textField}
             />
             <Field
-                name='userSurname'
-                id='userSurname'
+                name='surname'
+                id='surname'
                 label='Фамилия'
                 margin='normal'
                 component={RenderFormTextField}
@@ -37,8 +38,8 @@ let EditUserForm = ({ classes, handleSubmit, onSaveChanges }) => (
         </div>
         <div className={classes.rowContainer}>
             <Field
-                name='userPhone'
-                id='userPhone'
+                name='phone'
+                id='phone'
                 label='Телефон'
                 margin='normal'
                 component={RenderFormTextField}
@@ -79,19 +80,28 @@ let EditUserForm = ({ classes, handleSubmit, onSaveChanges }) => (
 
 EditUserForm.propTypes = {
     classes: PropTypes.object.isRequired,
+    initialValues: PropTypes.object,
     onSaveChanges: PropTypes.func,
     handleSubmit: PropTypes.func
 };
 
 EditUserForm.defaultProps = {
+    initialValues: {},
     handleSubmit: noop,
     onSaveChanges: noop
 };
 
+function mapStateToProps(state) {
+    return {
+        initialValues: state.loginReducer
+    };
+}
+
 EditUserForm = reduxForm({
     form: 'editUser',
-    validate: validateEditUser(['password', 'newPassword', 'confirmPassword']),
+    validate: validateEditUser(),
+    persistentSubmitErrors: false,
     destroyOnUnmount: false
 })(EditUserForm);
 
-export default withStyles(stylesJS)(EditUserForm);
+export default connect(mapStateToProps)(withStyles(stylesJS)(EditUserForm));

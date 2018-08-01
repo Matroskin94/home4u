@@ -1,5 +1,7 @@
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from '../../constants/constants';
 
+import mockUser from './mockUser';
+
 export function loginUserAction(userData) {
     const userState = {
         isFetching: true,
@@ -30,7 +32,7 @@ export function loginSuccessAction(userData) {
     const userState = {
         isFetching: false,
         isAuthenticated: true,
-        ...userData
+        ...mockUser
     };
 
     return ({

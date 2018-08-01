@@ -15,34 +15,6 @@ import EditUserForm from '../Forms/EditUserForm.jsx';
 
 import { noop } from './../../../utils/globalUtils';
 
-/* const EditProfileModal = ({
-    isOpen,
-    handleClose,
-    handleSave
-}) => (
-    <Dialog
-        open={isOpen}
-        onClose={handleClose}
-        aria-labelledby='form-dialog-title'
-    >
-        <DialogTitle id='form-dialog-title'>Редактирование профиля</DialogTitle>
-        <DialogContent>
-            <EditUserForm saveChanges={handleSave} />
-        </DialogContent>
-        <DialogActions>
-            <Button onClick={handleClose} color='primary'>
-              Отмена
-            </Button>
-            <Button
-                type='submit'
-                color='primary'
-            >
-              Сохранить
-            </Button>
-        </DialogActions>
-    </Dialog>
-); */
-
 class EditProfileModal extends PureComponent {
     static propTypes = {
         isOpen: PropTypes.bool,

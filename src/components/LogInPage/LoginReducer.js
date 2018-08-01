@@ -3,8 +3,12 @@ import { LOGIN_REQUEST, LOGIN_SUCCESS } from '../../constants/constants';
 const initialState = {
     isFetching: false,
     isAuthenticated: true,
-    userPassword: '',
-    userLogin: ''
+    password: '',
+    userLogin: 'not authorized',
+    name: 'not authorized',
+    surname: 'not authorized',
+    phone: '102',
+    email: 'lol@mail.ru'
 };
 
 export default function LoginReducer(state = initialState, action) {
