@@ -22,7 +22,7 @@ const AuthorisationCheck = ({ component: Component, ...rest }) => (
 
 function mapStateToProps(state) {
     return {
-        isAuthenticated: state.loginReducer.isAuthenticated
+        isAuthenticated: state.profileReducer.isAuthenticated
     };
 }
 

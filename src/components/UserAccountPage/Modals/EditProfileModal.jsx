@@ -19,22 +19,24 @@ class EditProfileModal extends PureComponent {
     static propTypes = {
         isOpen: PropTypes.bool,
         dispatch: PropTypes.func,
-        handleClose: PropTypes.func
+        handleClose: PropTypes.func,
+        handleSave: PropTypes.func
     };
 
     static defaultProps = {
         isOpen: false,
         dispatch: noop,
-        handleClose: noop
+        handleClose: noop,
+        handleSave: noop
     };
 
     handleSaveChanges = () => {
-        // const submitEvent = new Event('submit');
         this.props.dispatch(submit('editUser'));
     }
 
     handleSubmit = values => {
-        console.log('VAL', values);
+        this.props.handleClose();
+        this.props.handleSave(values);
     }
 
     render() {

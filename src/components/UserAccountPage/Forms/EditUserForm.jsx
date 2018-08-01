@@ -93,7 +93,7 @@ EditUserForm.defaultProps = {
 
 function mapStateToProps(state) {
     return {
-        initialValues: state.loginReducer
+        initialValues: state.profileReducer
     };
 }
 

@@ -22,19 +22,18 @@ const stylesJS = theme => (
         },
         alignTop10: {
             marginTop: '10px'
+        },
+        preloaderWrapper: {
+            position: 'absolute',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
+            height: '100%',
+            background: 'rgb(92,107,192, 0.3)',
+            zIndex: '1101'
         }
     }
 );
 
 export default stylesJS;
-
-
-/*
-margin: '80px auto 20px auto',
-            padding: '12px',
-            [theme.breakpoints.down('xs')]: {
-                width: '90%',
-                margin: '70px auto 20px auto'
-            }
-
-*/

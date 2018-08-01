@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -15,6 +15,10 @@ import { AccountCircle, ViewQuilt } from '@material-ui/icons';
 
 import ProfileInfo from './PageComponents/ProfileInfo.jsx';
 import EditProfileModal from './Modals/EditProfileModal.jsx';
+import Preloader from '../ui/Preloader/Preloader.jsx';
+
+import { editProfileRequest } from './UserAccountActions';
+import { noop } from '../../utils/globalUtils';
 
 import { EDIT_PROFILE_MODAL } from '../../constants/constants';
 
@@ -23,7 +27,9 @@ import stylesJS from './stylesJSS/ContentStylesJS';
 class Content extends PureComponent {
     static propTypes = {
         classes: PropTypes.object.isRequired,
-        userInfo: PropTypes.object
+        userInfo: PropTypes.object,
+        isFetching: PropTypes.bool,
+        editUser: PropTypes.func
     };
 
     static defaultProps = {
@@ -33,19 +39,18 @@ class Content extends PureComponent {
             phone: '',
             email: '',
             userLogin: ''
-        }
+        },
+        editUser: noop,
+        isFetching: false
     };
 
     state = {
         openModals: {
             [EDIT_PROFILE_MODAL]: false
-        },
-        userInfo: this.props.userInfo
+        }
     };
 
-    onProfileChangesSave = values => {
-        console.log('Changes saved', values);
-    }
+    onProfileChangesSave = values => this.props.editUser(values);
 
     toggleModal = modalName => {
         this.setState(prevState => ({
@@ -58,65 +63,62 @@ class Content extends PureComponent {
     }
 
     render() {
-        const { classes } = this.props;
-        const { openModals, userInfo } = this.state;
+        const { classes, userInfo, isFetching } = this.props;
+        const { openModals } = this.state;
 
         return (
-            <Paper className={classes.container}>
-                <Typography variant='display1'>Личный кабинет</Typography>
-                <div className={classes.accountControls}>
-                    <ExpansionPanel defaultExpanded>
-                        <ExpansionPanelSummary>
-                            <AccountCircle className={classes.icon} />
-                            <Typography className={classes.panelHeader}> Персональная информация </Typography>
-                        </ExpansionPanelSummary>
-                        <Divider />
-                        <ExpansionPanelDetails className={classes.panelContainer}>
-                            <ProfileInfo
-                                userInfo={userInfo}
-                                handleSaveClick={this.onProfileChangesSave}
-                                handleChangeClick={() => this.toggleModal(EDIT_PROFILE_MODAL)}
-                            />
-                        </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                    <ExpansionPanel>
-                        <ExpansionPanelSummary>
-                            <ViewQuilt className={classes.icon} />
-                            <Typography className={classes.panelHeader} variant='headline'> Панель управления </Typography>
-                        </ExpansionPanelSummary>
-                        <Divider />
-                        <ExpansionPanelDetails>
-                            <p>Панель информации</p>
-                        </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                </div>
-                <EditProfileModal
-                    userInfo={this.state.userInfo}
-                    isOpen={openModals[EDIT_PROFILE_MODAL]}
-                    handleSave={this.onProfileChangesSave}
-                    handleClose={() => this.toggleModal(EDIT_PROFILE_MODAL)}
-                />
-            </Paper>
+            <Fragment>
+                <Paper className={classes.container}>
+                    <Typography variant='display1'>Личный кабинет</Typography>
+                    <div className={classes.accountControls}>
+                        <ExpansionPanel defaultExpanded>
+                            <ExpansionPanelSummary>
+                                <AccountCircle className={classes.icon} />
+                                <Typography className={classes.panelHeader}> Персональная информация </Typography>
+                            </ExpansionPanelSummary>
+                            <Divider />
+                            <ExpansionPanelDetails className={classes.panelContainer}>
+                                <ProfileInfo
+                                    userInfo={userInfo}
+                                    handleChangeClick={() => this.toggleModal(EDIT_PROFILE_MODAL)}
+                                />
+                            </ExpansionPanelDetails>
+                        </ExpansionPanel>
+                        <ExpansionPanel>
+                            <ExpansionPanelSummary>
+                                <ViewQuilt className={classes.icon} />
+                                <Typography className={classes.panelHeader} variant='headline'> Панель управления </Typography>
+                            </ExpansionPanelSummary>
+                            <Divider />
+                            <ExpansionPanelDetails>
+                                <p>Панель информации</p>
+                            </ExpansionPanelDetails>
+                        </ExpansionPanel>
+                    </div>
+                    <EditProfileModal
+                        userInfo={this.state.userInfo}
+                        isOpen={openModals[EDIT_PROFILE_MODAL]}
+                        handleSave={this.onProfileChangesSave}
+                        handleClose={() => this.toggleModal(EDIT_PROFILE_MODAL)}
+                    />
+                </Paper>
+                <Preloader show={isFetching} />
+            </Fragment>
         );
     }
 }
 
 function mapStateToProps(state) {
     return {
-        userInfo: state.loginReducer
+        userInfo: state.profileReducer,
+        isFetching: state.networkReducer.isFetching
     };
 }
 
-/* AuthorisationCheck.propTypes = {
-    component: PropTypes.func,
-    isAuthenticated: PropTypes.bool
-};
+function mapDispatchToProps(dispatch) {
+    return {
+        editUser: userInfo => dispatch(editProfileRequest(userInfo))
+    };
+}
 
-AuthorisationCheck.defaultProps = {
-    component: {},
-    isAuthenticated: false
-};
-
-export default connect(mapStateToProps)(AuthorisationCheck); */
-
-export default connect(mapStateToProps)(withStyles(stylesJS)(Content));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(stylesJS)(Content));

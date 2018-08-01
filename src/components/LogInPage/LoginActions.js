@@ -24,6 +24,7 @@ export function loginRequestAction(userData) {
 
     return dispatch => {
         dispatch(loginUserAction(userData));
+
         return checkUser;
     };
 }

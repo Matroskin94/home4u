@@ -4,7 +4,7 @@ const initialState = {
     userLogin: ''
 };
 
-export default function LoginReducer(state = initialState, action) {
+export default function RegistrationReducer(state = initialState, action) {
     switch (action.type) {
         case REGISTRATION_REQUEST: {
             return {
