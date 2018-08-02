@@ -1,8 +1,9 @@
 const stylesJS = theme => (
     {
         preloaderWrapper: {
-            position: 'absolute',
+            position: 'fixed',
             display: 'flex',
+            top: 0,
             alignItems: 'center',
             justifyContent: 'center',
             width: '100%',
