@@ -16,6 +16,7 @@ import { AccountCircle, ViewQuilt } from '@material-ui/icons';
 import ProfileInfo from './PageComponents/ProfileInfo.jsx';
 import EditProfileModal from './Modals/EditProfileModal.jsx';
 import Preloader from '../ui/Preloader/Preloader.jsx';
+import HousesInfo from './PageComponents/HousesInfo.jsx';
 
 import { editProfileRequest } from './UserAccountActions';
 import { noop } from '../../utils/globalUtils';
@@ -71,7 +72,7 @@ class Content extends PureComponent {
                 <Paper className={classes.container}>
                     <Typography variant='display1'>Личный кабинет</Typography>
                     <div className={classes.accountControls}>
-                        <ExpansionPanel defaultExpanded>
+                        <ExpansionPanel>
                             <ExpansionPanelSummary>
                                 <AccountCircle className={classes.icon} />
                                 <Typography className={classes.panelHeader}> Персональная информация </Typography>
@@ -94,6 +95,7 @@ class Content extends PureComponent {
                                 <p>Панель информации</p>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
+                        <HousesInfo />
                     </div>
                     <EditProfileModal
                         userInfo={this.state.userInfo}
