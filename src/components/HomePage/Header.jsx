@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 const Header = props => (
     <div>
-        <h1>Умный дом!!! {String(props.homeState)}</h1>
+        <h1>Умный дом!!! {String(props.houseState)}</h1>
     </div>
 );
 
 Header.propTypes = {
-    homeState: PropTypes.bool
+    houseState: PropTypes.bool
 };
 
 Header.defaultProps = {
-    homeState: false
+    houseState: false
 };
 
 export default Header;

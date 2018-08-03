@@ -15,8 +15,8 @@ import {
 import PropTypes from 'prop-types';
 
 import stylesJS from './stylesJSS/ContentStylesJS';
-import homeIcon from './img/house(200).png';
-import homeSettingsIcon from './img/houseCustoming(200).png';
+import houseIcon from './img/house(200).png';
+import houseSettingsIcon from './img/houseCustoming(200).png';
 
 const Content = ({ classes }) => (
     <Paper className={classes.container}>
@@ -38,7 +38,7 @@ const Content = ({ classes }) => (
                     <CardMedia
                         title='Contemplative Reptile'
                         className={classes.media}
-                        image={homeIcon}
+                        image={houseIcon}
                     />
                     <CardContent>
                         <Typography
@@ -71,7 +71,7 @@ const Content = ({ classes }) => (
                     <CardMedia
                         title='Contemplative Reptile'
                         className={classes.media}
-                        image={homeSettingsIcon}
+                        image={houseSettingsIcon}
                     />
                     <CardContent>
                         <Typography

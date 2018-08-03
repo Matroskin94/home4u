@@ -1,16 +1,16 @@
 const stylesJS = theme => (
     {
         container: {
-        	marginTop: '10px'
+            marginTop: '10px'
         },
         houseListContainer: {
-        	marginTop: '10px',
-        	padding: '24px'
+            marginTop: '10px',
+            padding: '24px'
         },
         housesList: {
-        	background: 'rgb(232,234,246, 0.3);',
-		    padding: '10px 0',
-		    marginBottom: '10px'
+            background: 'rgb(232,234,246, 0.3);',
+            padding: '10px 10px',
+            marginBottom: '10px'
         },
         smallButton: {
             paddingTop: '0px',

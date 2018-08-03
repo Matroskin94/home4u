@@ -14,16 +14,31 @@ import {
 import { AccountCircle, ViewQuilt } from '@material-ui/icons';
 
 import ProfileInfo from './PageComponents/ProfileInfo.jsx';
-import EditProfileModal from './Modals/EditProfileModal.jsx';
+import FormModal from './Modals/FormModal.jsx';
 import Preloader from '../ui/Preloader/Preloader.jsx';
-import HousesInfo from './PageComponents/HousesInfo.jsx';
+import HouseInfo from './PageComponents/HouseInfo.jsx';
 
 import { editProfileRequest } from './UserAccountActions';
 import { noop } from '../../utils/globalUtils';
 
-import { EDIT_PROFILE_MODAL } from '../../constants/constants';
+import { EDIT_PROFILE, ADD_HOUSE } from '../../constants/constants';
 
 import stylesJS from './stylesJSS/ContentStylesJS';
+
+const houseList = [
+    {
+        houseName: 'Моя квартира',
+        address: 'Витебск, пр.Фрунзе, д.35, кв.23',
+        houseDescription: 'Съёмная квартира',
+        timezone: '(GMT+3)'
+    },
+    {
+        houseName: 'Дача',
+        address: 'Витебск, ул. Дачная, д.15',
+        houseDescription: 'Съёмная квартира',
+        timezone: '(GMT+3)'
+    }
+];
 
 class Content extends PureComponent {
     static propTypes = {
@@ -47,7 +62,7 @@ class Content extends PureComponent {
 
     state = {
         openModals: {
-            [EDIT_PROFILE_MODAL]: false
+            [EDIT_PROFILE]: false
         }
     };
 
@@ -81,7 +96,7 @@ class Content extends PureComponent {
                             <ExpansionPanelDetails className={classes.panelContainer}>
                                 <ProfileInfo
                                     userInfo={userInfo}
-                                    handleChangeClick={() => this.toggleModal(EDIT_PROFILE_MODAL)}
+                                    handleChangeClick={() => this.toggleModal(EDIT_PROFILE)}
                                 />
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
@@ -95,13 +110,22 @@ class Content extends PureComponent {
                                 <p>Панель информации</p>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
-                        <HousesInfo />
+                        <HouseInfo
+                            handleAddClick={() => this.toggleModal(ADD_HOUSE)}
+                            houseList={houseList}
+                        />
                     </div>
-                    <EditProfileModal
-                        userInfo={this.state.userInfo}
-                        isOpen={openModals[EDIT_PROFILE_MODAL]}
+                    <FormModal
+                        modalType={EDIT_PROFILE}
+                        isOpen={openModals[EDIT_PROFILE]}
                         handleSave={this.onProfileChangesSave}
-                        handleClose={() => this.toggleModal(EDIT_PROFILE_MODAL)}
+                        handleClose={() => this.toggleModal(EDIT_PROFILE)}
+                    />
+                    <FormModal
+                        modalType={ADD_HOUSE}
+                        isOpen={openModals[ADD_HOUSE]}
+                        handleSave={this.onProfileChangesSave}
+                        handleClose={() => this.toggleModal(ADD_HOUSE)}
                     />
                 </Paper>
                 <Preloader show={isFetching} />

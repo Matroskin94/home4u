@@ -12,7 +12,7 @@ const stylesJS = theme => (
     }
 );
 
-const HomePageWrapper = () => WrappedComponent => {
+const homePageWrapper = () => WrappedComponent => {
     class AddStyles extends PureComponent {
         static propTypes = {
             classes: PropTypes.object.isRequired
@@ -27,4 +27,4 @@ const HomePageWrapper = () => WrappedComponent => {
     return withStyles(stylesJS)(AddStyles);
 };
 
-export default HomePageWrapper;
+export default homePageWrapper;

@@ -7,7 +7,7 @@ import homePageWrapper from '../../components/HomePage/HomePageWrapper.jsx';
 import HiddenMenu from '../../components/TopMenu/HiddenMenu.jsx';
 
 @homePageWrapper()
-class HomeAccountPage extends PureComponent {
+class houseAccountPage extends PureComponent {
     static propTypes = {
         styles: PropTypes.object,
         children: PropTypes.element.isRequired
@@ -37,5 +37,5 @@ class HomeAccountPage extends PureComponent {
 }
 
 
-export default HomeAccountPage;
+export default houseAccountPage;
 

@@ -1,18 +1,34 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import { random } from 'lodash';
 // import { withStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core/';
+import { Avatar, List, ListItem, ListItemText, Paper } from '@material-ui/core/';
+import { HomeRounded } from '@material-ui/icons/';
 
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-const HouseList = () => (
-    <Fragment>
-        <Typography variant='title'>Список не пустой</Typography>
-    </Fragment>
+const HouseList = ({ houseList }) => (
+    <Paper>
+        {houseList.map(house => (
+            <List dense key={random(0, 1, true)}>
+                <ListItem button>
+                    <Avatar>
+                        <HomeRounded />
+                    </Avatar>
+                    <ListItemText primary={house.houseName} secondary={house.address} />
+                </ListItem>
+            </List>
+        ))}
+    </Paper>
 );
 
-/* HouseList.propTypes = {
-    classes: PropTypes.object.isRequired
-}; */
+HouseList.propTypes = {
+    houseList: PropTypes.array
+    // classes: PropTypes.object.isRequired
+};
 
-// export default withStyles(stylesJS)(HouseList);
+HouseList.defaultProps = {
+    houseList: []
+};
+
+// export default withStyles(stylesJS)(houseList);
 export default HouseList;

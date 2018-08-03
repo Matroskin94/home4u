@@ -12,11 +12,15 @@ import {
 } from '@material-ui/core';
 
 import EditUserForm from '../Forms/EditUserForm.jsx';
+import AddHouseForm from '../Forms/AddHouseForm.jsx';
 
 import { noop } from './../../../utils/globalUtils';
 
-class EditProfileModal extends PureComponent {
+import { FORM_TYPES } from './../../../constants/constants';
+
+class FormModal extends PureComponent {
     static propTypes = {
+        modalType: PropTypes.string,
         isOpen: PropTypes.bool,
         dispatch: PropTypes.func,
         handleClose: PropTypes.func,
@@ -24,14 +28,19 @@ class EditProfileModal extends PureComponent {
     };
 
     static defaultProps = {
+        modalType: '',
         isOpen: false,
         dispatch: noop,
         handleClose: noop,
         handleSave: noop
     };
 
+    state = {
+        modalType: FORM_TYPES[this.props.modalType]
+    }
+
     handleSaveChanges = () => {
-        this.props.dispatch(submit('editUser'));
+        this.props.dispatch(submit(this.state.modalType.FORM_NAME));
     }
 
     handleSubmit = values => {
@@ -39,19 +48,38 @@ class EditProfileModal extends PureComponent {
         this.props.handleSave(values);
     }
 
+    renderForm = () => {
+        switch (this.state.modalType.FORM_NAME) {
+            case FORM_TYPES.EDIT_PROFILE.FORM_NAME: {
+                return (<EditUserForm onSaveChanges={this.handleSubmit} />);
+            }
+
+            case FORM_TYPES.ADD_HOUSE.FORM_NAME: {
+                return (<AddHouseForm onSaveChanges={this.handleSubmit} />);
+            }
+
+            default: {
+                return 'Form error';
+            }
+        }
+    }
+
     render() {
         const { isOpen, handleClose } = this.props;
+        const { modalType } = this.state;
 
         return (
             <Dialog
                 open={isOpen}
                 onClose={handleClose}
                 aria-labelledby='form-dialog-title'
-                maxWidth='md'
+                fullWidth
+                maxWidth='sm'
+                scroll='body'
             >
-                <DialogTitle id='form-dialog-title'>Редактирование профиля</DialogTitle>
+                <DialogTitle id='form-dialog-title'>{modalType.DIALOG_TITLE}</DialogTitle>
                 <DialogContent>
-                    <EditUserForm onSaveChanges={this.handleSubmit} />
+                    {this.renderForm()}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color='primary'>
@@ -62,7 +90,7 @@ class EditProfileModal extends PureComponent {
                         color='primary'
                         onClick={this.handleSaveChanges}
                     >
-                      Сохранить
+                        {modalType.ACTION}
                     </Button>
                 </DialogActions>
             </Dialog>
@@ -70,4 +98,4 @@ class EditProfileModal extends PureComponent {
     }
 }
 
-export default connect(null)(EditProfileModal);
+export default connect(null)(FormModal);
