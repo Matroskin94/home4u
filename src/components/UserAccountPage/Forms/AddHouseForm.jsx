@@ -11,9 +11,9 @@ import { noop } from '../../../utils/globalUtils';
 
 import stylesJS from './stylesJSS/EditUserFormStylesJS';
 
-let EditUserForm = ({ classes, handleSubmit, onSaveChanges }) => (
+let AddHouseForm = ({ classes, handleSubmit, onSaveChanges }) => (
     <Form
-        name='addhouse'
+        name='addHouse'
         className={classes.formContainer}
         onSubmit={handleSubmit(onSaveChanges)}
     >
@@ -34,7 +34,7 @@ let EditUserForm = ({ classes, handleSubmit, onSaveChanges }) => (
             component={RenderFormTextField}
         />
         <Field
-            name='adders'
+            name='address'
             id='name'
             label='Адрес'
             margin='normal'
@@ -52,21 +52,21 @@ let EditUserForm = ({ classes, handleSubmit, onSaveChanges }) => (
     </Form>
 );
 
-EditUserForm.propTypes = {
+AddHouseForm.propTypes = {
     classes: PropTypes.object.isRequired,
     onSaveChanges: PropTypes.func,
     handleSubmit: PropTypes.func
 };
 
-EditUserForm.defaultProps = {
+AddHouseForm.defaultProps = {
     handleSubmit: noop,
     onSaveChanges: noop
 };
 
-EditUserForm = reduxForm({
+AddHouseForm = reduxForm({
     form: 'addHouse',
     persistentSubmitErrors: false,
     destroyOnUnmount: false
-})(EditUserForm);
+})(AddHouseForm);
 
-export default connect(null)(withStyles(stylesJS)(EditUserForm));
+export default connect(null)(withStyles(stylesJS)(AddHouseForm));

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { submit } from 'redux-form';
+import { submit, reset } from 'redux-form';
 import { connect } from 'react-redux';
 
 import {
@@ -46,6 +46,10 @@ class FormModal extends PureComponent {
     handleSubmit = values => {
         this.props.handleClose();
         this.props.handleSave(values);
+
+        if (this.state.modalType.FORM_NAME === FORM_TYPES.ADD_HOUSE.FORM_NAME) {
+            this.props.dispatch(reset('addHouse'));
+        }
     }
 
     renderForm = () => {

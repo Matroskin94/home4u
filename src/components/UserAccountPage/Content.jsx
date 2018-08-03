@@ -19,13 +19,14 @@ import Preloader from '../ui/Preloader/Preloader.jsx';
 import HouseInfo from './PageComponents/HouseInfo.jsx';
 
 import { editProfileRequest } from './UserAccountActions';
+import { addHouseRequest } from '../../services/actions/HouseActions';
 import { noop } from '../../utils/globalUtils';
 
 import { EDIT_PROFILE, ADD_HOUSE } from '../../constants/constants';
 
 import stylesJS from './stylesJSS/ContentStylesJS';
 
-const houseList = [
+/* const houseList = [
     {
         houseName: 'Моя квартира',
         address: 'Витебск, пр.Фрунзе, д.35, кв.23',
@@ -38,14 +39,17 @@ const houseList = [
         houseDescription: 'Съёмная квартира',
         timezone: '(GMT+3)'
     }
-];
+]; */
 
 class Content extends PureComponent {
     static propTypes = {
         classes: PropTypes.object.isRequired,
+        resetForm: PropTypes.func,
         userInfo: PropTypes.object,
         isFetching: PropTypes.bool,
-        editUser: PropTypes.func
+        userHouses: PropTypes.array,
+        editUser: PropTypes.func,
+        addHouse: PropTypes.func
     };
 
     static defaultProps = {
@@ -56,7 +60,10 @@ class Content extends PureComponent {
             email: '',
             userLogin: ''
         },
+        resetForm: noop,
         editUser: noop,
+        addHouse: noop,
+        userHouses: [],
         isFetching: false
     };
 
@@ -67,6 +74,8 @@ class Content extends PureComponent {
     };
 
     onProfileChangesSave = values => this.props.editUser(values);
+
+    onAddHouse = values => this.props.addHouse(values);
 
     toggleModal = modalName => {
         this.setState(prevState => ({
@@ -79,7 +88,12 @@ class Content extends PureComponent {
     }
 
     render() {
-        const { classes, userInfo, isFetching } = this.props;
+        const {
+            classes,
+            userInfo,
+            isFetching,
+            userHouses
+        } = this.props;
         const { openModals } = this.state;
 
         return (
@@ -112,7 +126,7 @@ class Content extends PureComponent {
                         </ExpansionPanel>
                         <HouseInfo
                             handleAddClick={() => this.toggleModal(ADD_HOUSE)}
-                            houseList={houseList}
+                            houseList={userHouses}
                         />
                     </div>
                     <FormModal
@@ -124,7 +138,7 @@ class Content extends PureComponent {
                     <FormModal
                         modalType={ADD_HOUSE}
                         isOpen={openModals[ADD_HOUSE]}
-                        handleSave={this.onProfileChangesSave}
+                        handleSave={this.onAddHouse}
                         handleClose={() => this.toggleModal(ADD_HOUSE)}
                     />
                 </Paper>
@@ -137,13 +151,15 @@ class Content extends PureComponent {
 function mapStateToProps(state) {
     return {
         userInfo: state.profileReducer,
-        isFetching: state.networkReducer.isFetching
+        isFetching: state.networkReducer.isFetching,
+        userHouses: state.houseReducer.userHouses
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        editUser: userInfo => dispatch(editProfileRequest(userInfo))
+        editUser: userInfo => dispatch(editProfileRequest(userInfo)),
+        addHouse: houseInfo => dispatch(addHouseRequest(houseInfo))
     };
 }
 
