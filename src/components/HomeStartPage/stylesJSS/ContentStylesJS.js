@@ -2,7 +2,7 @@ const stylesJS = theme => (
     {
         container: {
             flex: '1 0 auto',
-            width: '95%',
+            width: '75%',
             margin: '80px auto 20px auto',
             padding: '12px',
             [theme.breakpoints.down('xs')]: {

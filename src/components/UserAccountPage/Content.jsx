@@ -9,7 +9,8 @@ import {
     Paper,
     ExpansionPanel,
     ExpansionPanelDetails,
-    ExpansionPanelSummary
+    ExpansionPanelSummary,
+    Zoom
 } from '@material-ui/core';
 import { AccountCircle, ViewQuilt } from '@material-ui/icons';
 
@@ -25,21 +26,6 @@ import { noop } from '../../utils/globalUtils';
 import { EDIT_PROFILE, ADD_HOUSE } from '../../constants/constants';
 
 import stylesJS from './stylesJSS/ContentStylesJS';
-
-/* const houseList = [
-    {
-        houseName: 'Моя квартира',
-        address: 'Витебск, пр.Фрунзе, д.35, кв.23',
-        houseDescription: 'Съёмная квартира',
-        timezone: '(GMT+3)'
-    },
-    {
-        houseName: 'Дача',
-        address: 'Витебск, ул. Дачная, д.15',
-        houseDescription: 'Съёмная квартира',
-        timezone: '(GMT+3)'
-    }
-]; */
 
 class Content extends PureComponent {
     static propTypes = {
@@ -98,50 +84,52 @@ class Content extends PureComponent {
 
         return (
             <Fragment>
-                <Paper className={classes.container}>
-                    <Typography variant='display1'>Личный кабинет</Typography>
-                    <div className={classes.accountControls}>
-                        <ExpansionPanel>
-                            <ExpansionPanelSummary>
-                                <AccountCircle className={classes.icon} />
-                                <Typography className={classes.panelHeader}> Персональная информация </Typography>
-                            </ExpansionPanelSummary>
-                            <Divider />
-                            <ExpansionPanelDetails className={classes.panelContainer}>
-                                <ProfileInfo
-                                    userInfo={userInfo}
-                                    handleChangeClick={() => this.toggleModal(EDIT_PROFILE)}
-                                />
-                            </ExpansionPanelDetails>
-                        </ExpansionPanel>
-                        <ExpansionPanel>
-                            <ExpansionPanelSummary>
-                                <ViewQuilt className={classes.icon} />
-                                <Typography className={classes.panelHeader} variant='headline'> Панель управления </Typography>
-                            </ExpansionPanelSummary>
-                            <Divider />
-                            <ExpansionPanelDetails>
-                                <p>Панель информации</p>
-                            </ExpansionPanelDetails>
-                        </ExpansionPanel>
-                        <HouseInfo
-                            handleAddClick={() => this.toggleModal(ADD_HOUSE)}
-                            houseList={userHouses}
+                <Zoom in>
+                    <Paper className={classes.container}>
+                        <Typography variant='display1'>Личный кабинет</Typography>
+                        <div className={classes.accountControls}>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary>
+                                    <AccountCircle className={classes.icon} />
+                                    <Typography className={classes.panelHeader}> Персональная информация </Typography>
+                                </ExpansionPanelSummary>
+                                <Divider />
+                                <ExpansionPanelDetails className={classes.panelContainer}>
+                                    <ProfileInfo
+                                        userInfo={userInfo}
+                                        handleChangeClick={() => this.toggleModal(EDIT_PROFILE)}
+                                    />
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary>
+                                    <ViewQuilt className={classes.icon} />
+                                    <Typography className={classes.panelHeader} variant='headline'> Панель управления </Typography>
+                                </ExpansionPanelSummary>
+                                <Divider />
+                                <ExpansionPanelDetails>
+                                    <p>Панель информации</p>
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                            <HouseInfo
+                                handleAddClick={() => this.toggleModal(ADD_HOUSE)}
+                                houseList={userHouses}
+                            />
+                        </div>
+                        <FormModal
+                            modalType={EDIT_PROFILE}
+                            isOpen={openModals[EDIT_PROFILE]}
+                            handleSave={this.onProfileChangesSave}
+                            handleClose={() => this.toggleModal(EDIT_PROFILE)}
                         />
-                    </div>
-                    <FormModal
-                        modalType={EDIT_PROFILE}
-                        isOpen={openModals[EDIT_PROFILE]}
-                        handleSave={this.onProfileChangesSave}
-                        handleClose={() => this.toggleModal(EDIT_PROFILE)}
-                    />
-                    <FormModal
-                        modalType={ADD_HOUSE}
-                        isOpen={openModals[ADD_HOUSE]}
-                        handleSave={this.onAddHouse}
-                        handleClose={() => this.toggleModal(ADD_HOUSE)}
-                    />
-                </Paper>
+                        <FormModal
+                            modalType={ADD_HOUSE}
+                            isOpen={openModals[ADD_HOUSE]}
+                            handleSave={this.onAddHouse}
+                            handleClose={() => this.toggleModal(ADD_HOUSE)}
+                        />
+                    </Paper>
+                </Zoom>
                 <Preloader show={isFetching} />
             </Fragment>
         );
