@@ -6,6 +6,8 @@ import Footer from '../../components/HomePage/Footer.jsx';
 import homePageWrapper from '../../components/HomePage/HomePageWrapper.jsx';
 import HiddenMenu from '../../components/TopMenu/HiddenMenu.jsx';
 
+import ROUTES from '../../constants/routes';
+
 @homePageWrapper()
 class houseAccountPage extends PureComponent {
     static propTypes = {
@@ -17,9 +19,9 @@ class houseAccountPage extends PureComponent {
     };
 
     menuItems = [
-        { itemText: 'Профиль', itemLink: '/myhome/account' },
-        { itemText: 'Управление', itemLink: '/myhome/control' },
-        { itemText: 'Выход', itemLink: '/' }
+        { itemText: 'Профиль', itemLink: ROUTES.MY_HOME_ACCOUNT },
+        { itemText: 'Управление', itemLink: ROUTES.MY_HOME_CONTROL },
+        { itemText: 'Выход', itemLink: ROUTES.BASE }
     ];
 
     render() {

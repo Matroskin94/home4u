@@ -8,6 +8,9 @@ const stylesJS = theme => (
             padding: '24px'
         },
         housesList: {
+            textAlign: 'center',
+            alignItems: 'center',
+            justifyContent: 'center',
             background: 'rgb(232,234,246, 0.3);',
             padding: '10px 10px',
             marginBottom: '10px'

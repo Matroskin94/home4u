@@ -10,6 +10,9 @@ import LogInPage from './LogInPage.jsx';
 import AuthorisationCheck from './AuthorisationCheck.jsx';
 // import YourhousePageRouter from './YourhousePageRouter.jsx';
 import YourHomePageRouter from './YourHomePageRouter.jsx';
+
+import ROUTES from '../constants/routes';
+
 import '../styles/styles.css';
 
 const store = initStore();
@@ -25,9 +28,9 @@ const AppRouter = props => (
                     path='/'
                     component={HomePage}
                 />
-                <Route path='/login' component={LogInPage} />
-                <Route path='/registration' component={RegistrationPage} />
-                <AuthorisationCheck path='/myhome/' component={YourHomePageRouter} />
+                <Route path={ROUTES.LOGIN} component={LogInPage} />
+                <Route path={ROUTES.REGISTRATION} component={RegistrationPage} />
+                <AuthorisationCheck path={ROUTES.MY_HOME} component={YourHomePageRouter} />
             </Switch>
         </BrowserRouter>
     </Provider>

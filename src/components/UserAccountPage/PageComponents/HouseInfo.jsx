@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
-import { Typography, Button, Paper } from '@material-ui/core/';
+import { Typography, Button, Paper, CircularProgress } from '@material-ui/core/';
 import { house } from '@material-ui/icons';
 
 import HouseList from './HouseList.jsx';
@@ -15,18 +15,26 @@ class HousesInfo extends PureComponent {
     static propTypes = {
         classes: PropTypes.object.isRequired,
         houseList: PropTypes.array,
-        handleAddClick: PropTypes.func
+        handleAddClick: PropTypes.func,
+        isHousesLoading: PropTypes.bool
     };
 
     static defaultProps = {
         houseList: [],
-        handleAddClick: noop
+        handleAddClick: noop,
+        isHousesLoading: false
     }
 
     renderhouseList = () => {
-        const houseList = this.props.houseList.length === 0 ?
-            <Typography align='center' variant='caption'>Список домов пуст</Typography> :
-            <HouseList houseList={this.props.houseList} />;
+        let houseList;
+
+        if (!this.props.isHousesLoading) {
+            houseList = this.props.houseList.length === 0 ?
+                <Typography align='center' variant='caption'>Список домов пуст</Typography> :
+                <HouseList houseList={this.props.houseList} />;
+        } else {
+            houseList = <CircularProgress />;
+        }
 
         return houseList;
     }
