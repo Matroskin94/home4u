@@ -1,36 +1,13 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from '../../constants/constants';
+import { fetchRequest, fetchSuccess } from '../../services/actions/NetworkActions';
 
-export function loginUserAction(userData) {
-    const userState = {
-        isFetching: true,
-        isAuthenticated: false,
-        ...userData
-    };
+import { LOGIN_SUCCESS, LOGIN_FAILURE } from '../../constants/constants';
 
-    return ({
-        type: LOGIN_REQUEST,
-        payload: userState
-    });
-}
-
-export function loginRequestAction(userData) {
-    const checkUser = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(true);
-        }, 1000);
-    });
-
-    return dispatch => {
-        dispatch(loginUserAction(userData));
-        return checkUser;
-    };
-}
+import mockUser from './mockUser';
 
 export function loginSuccessAction(userData) {
     const userState = {
-        isFetching: false,
         isAuthenticated: true,
-        ...userData
+        ...mockUser
     };
 
     return ({
@@ -50,4 +27,22 @@ export function loginFailureAction(userData) {
         type: LOGIN_FAILURE,
         payload: userState
     });
+}
+
+
+export function loginRequestAction(userData) {
+    const checkUser = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(userData);
+        }, 1000);
+    });
+
+    return dispatch => {
+        dispatch(fetchRequest());
+
+        return checkUser.then(response => {
+            dispatch(fetchSuccess());
+            dispatch(loginSuccessAction(response));
+        });
+    };
 }

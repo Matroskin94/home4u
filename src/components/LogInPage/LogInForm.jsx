@@ -1,4 +1,5 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import
 {
@@ -20,7 +21,8 @@ import
     VisibilityOff
 } from '@material-ui/icons';
 import FormControl from '@material-ui/core/FormControl';
-import PropTypes from 'prop-types';
+
+import Preloader from '../ui/Preloader/Preloader.jsx';
 
 import stylesJS from './LoginFormStylesJS';
 import loginHOC from './LoginHOC.jsx';
@@ -30,10 +32,12 @@ import { noop } from '../../utils/globalUtils';
 class LogInForm extends PureComponent {
     static propTypes = {
         classes: PropTypes.object.isRequired,
-        onEnterClick: PropTypes.func // Функция из LoginHOC для авторизации пользователя
+        onEnterClick: PropTypes.func, // Функция из LoginHOC для авторизации пользователя
+        isFetching: PropTypes.bool // Переменная ожидания ответа от сервера
     };
     static defaultProps = {
-        onEnterClick: noop
+        onEnterClick: noop,
+        isFetching: false
     };
     state = {
         userPassword: '',
@@ -61,59 +65,62 @@ class LogInForm extends PureComponent {
 
 
     render() {
-        const { classes } = this.props;
+        const { classes, isFetching } = this.props;
 
         return (
-            <div className={classes.container}>
-                <Paper className={classes.paper}>
-                    <Typography variant='display1' align='center'>Вход</Typography>
-                    <div className={classes.flexContainer}>
-                        <AssignmentInd className={classes.icon} />
-                        <TextField
-                            id='userLogin'
-                            label='Введите логин'
-                            placeholder=''
-                            className={classes.textField}
-                            margin='normal'
-                            onChange={this.handleChange('userLogin')}
-                        />
-                    </div>
-
-                    <div className={classes.flexContainer}>
-                        <LockOutlined className={classes.icon} />
-                        <FormControl margin='normal' className={classes.textField}>
-
-                            <InputLabel htmlFor='loginPassword'>Password</InputLabel>
-                            <Input
-                                id='loginPassword'
-                                type={this.state.showPassword ? 'text' : 'password'}
-                                value={this.state.password}
-                                onChange={this.handleChange('userPassword')}
-                                endAdornment={
-                                    <InputAdornment position='end'>
-                                        <IconButton
-                                            onClick={this.handleClickShowPasssword}
-                                            onMouseDown={this.handleMouseDownPassword}
-                                        >
-                                            {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
+            <Fragment>
+                <div className={classes.container}>
+                    <Paper className={classes.paper}>
+                        <Typography variant='display1' align='center'>Вход</Typography>
+                        <div className={classes.flexContainer}>
+                            <AssignmentInd className={classes.icon} />
+                            <TextField
+                                id='userLogin'
+                                label='Введите логин'
+                                placeholder=''
+                                className={classes.textField}
+                                margin='normal'
+                                onChange={this.handleChange('userLogin')}
                             />
-                        </FormControl>
-                    </div>
-                    <div className={classes.flexContainer}>
-                        <Button
-                            variant='raised'
-                            color='primary'
-                            className={classes.button}
-                            onClick={this.handleEnterClick}
-                        >
-                            Войти
-                        </Button>
-                    </div>
-                </Paper>
-            </div>);
+                        </div>
+
+                        <div className={classes.flexContainer}>
+                            <LockOutlined className={classes.icon} />
+                            <FormControl margin='normal' className={classes.textField}>
+
+                                <InputLabel htmlFor='loginPassword'>Password</InputLabel>
+                                <Input
+                                    id='loginPassword'
+                                    type={this.state.showPassword ? 'text' : 'password'}
+                                    value={this.state.password}
+                                    onChange={this.handleChange('userPassword')}
+                                    endAdornment={
+                                        <InputAdornment position='end'>
+                                            <IconButton
+                                                onClick={this.handleClickShowPasssword}
+                                                onMouseDown={this.handleMouseDownPassword}
+                                            >
+                                                {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    }
+                                />
+                            </FormControl>
+                        </div>
+                        <div className={classes.flexContainer}>
+                            <Button
+                                variant='raised'
+                                color='primary'
+                                className={classes.button}
+                                onClick={this.handleEnterClick}
+                            >
+                                Войти
+                            </Button>
+                        </div>
+                    </Paper>
+                </div>
+                <Preloader show={isFetching} />
+            </Fragment>);
     }
 }
 

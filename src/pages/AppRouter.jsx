@@ -8,7 +8,7 @@ import HomePage from './HomePage.jsx';
 import RegistrationPage from './RegistrationPage.jsx';
 import LogInPage from './LogInPage.jsx';
 import AuthorisationCheck from './AuthorisationCheck.jsx';
-// import YourHomePageRouter from './YourHomePageRouter.jsx';
+// import YourhousePageRouter from './YourhousePageRouter.jsx';
 import YourHomePageRouter from './YourHomePageRouter.jsx';
 import '../styles/styles.css';
 

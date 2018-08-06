@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { withStyles } from '@material-ui/core/styles';
+
 import {
     Button,
     Card,
@@ -10,92 +10,96 @@ import {
     Typography,
     Paper,
     Grid,
-    withStyles
+    withStyles,
+    Zoom
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 import stylesJS from './stylesJSS/ContentStylesJS';
-import homeIcon from './img/house(200).png';
-import homeSettingsIcon from './img/houseCustoming(200).png';
+// import houseSettingsIcon from './img/houseCustoming(200).png';
+import profileIcon from '../../assets/ProfileCard.jpg';
+import customizeIcon from '../../assets/CustomizeCard.jpg';
 
 const Content = ({ classes }) => (
-    <Paper className={classes.container}>
-        <Grid
-            container
-            justify='center'
-            spacing={24}
-        >
-            <Grid item xs={12}>
-                <Typography align='center' variant='display1'>Умный дом для Вас!</Typography>
-            </Grid>
+    <Zoom in>
+        <Paper className={classes.container}>
             <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
+                container
+                justify='center'
+                spacing={24}
             >
-                <Card className={classes.card}>
-                    <CardMedia
-                        title='Contemplative Reptile'
-                        className={classes.media}
-                        image={homeIcon}
-                    />
-                    <CardContent>
-                        <Typography
-                            gutterBottom
-                            variant='headline'
-                            component='h2'
-                        >
-                        Профиль
-                        </Typography>
-                        <Typography component='p'>
-                            Настройка личного профиля владельца системы.
-                        </Typography>
-                    </CardContent>
-                    <CardActions className={classes.cardActions}>
-                        <Link to='/myhome/account'>
-                            <Button size='small' color='primary'>
-                                Профиль
-                            </Button>
-                        </Link>
-                    </CardActions>
-                </Card>
+                <Grid item xs={12}>
+                    <Typography align='center' variant='display1'>Умный дом для Вас!</Typography>
+                </Grid>
+                <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    md={4}
+                >
+                    <Card className={classes.card}>
+                        <CardMedia
+                            title='Contemplative Reptile'
+                            image={profileIcon}
+                            className={classes.media}
+                        />
+                        <CardContent>
+                            <Typography
+                                gutterBottom
+                                variant='headline'
+                                component='h2'
+                            >
+                            Профиль
+                            </Typography>
+                            <Typography component='p'>
+                                Настройка личного профиля владельца системы.
+                            </Typography>
+                        </CardContent>
+                        <CardActions className={classes.cardActions}>
+                            <Link to='/myhome/account'>
+                                <Button size='small' color='primary'>
+                                    Профиль
+                                </Button>
+                            </Link>
+                        </CardActions>
+                    </Card>
+                </Grid>
+                <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    md={4}
+                >
+                    <Card className={classes.card}>
+                        <CardMedia
+                            title='Contemplative Reptile'
+                            className={classes.media}
+                            image={customizeIcon}
+                        />
+                        <CardContent>
+                            <Typography
+                                gutterBottom
+                                variant='headline'
+                                component='h2'
+                            >
+                            Управление
+                            </Typography>
+                            <Typography component='p'>
+                                Управление и настройка параметров Вашей системы "Умный дом"
+                            </Typography>
+                        </CardContent>
+                        <CardActions className={classes.cardActions}>
+                            <Link to='/myhome/control'>
+                                <Button size='small' color='primary'>
+                                    Управление
+                                </Button>
+                            </Link>
+                        </CardActions>
+                    </Card>
+                </Grid>
             </Grid>
-            <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-            >
-                <Card className={classes.card}>
-                    <CardMedia
-                        title='Contemplative Reptile'
-                        className={classes.media}
-                        image={homeSettingsIcon}
-                    />
-                    <CardContent>
-                        <Typography
-                            gutterBottom
-                            variant='headline'
-                            component='h2'
-                        >
-                        Управление
-                        </Typography>
-                        <Typography component='p'>
-                            Управление и настройка параметров Вашей системы "Умный дом"
-                        </Typography>
-                    </CardContent>
-                    <CardActions className={classes.cardActions}>
-                        <Link to='/myhome/control'>
-                            <Button size='small' color='primary'>
-                                Управление
-                            </Button>
-                        </Link>
-                    </CardActions>
-                </Card>
-            </Grid>
-        </Grid>
-    </Paper>
+        </Paper>
+    </Zoom>
 );
 
 Content.propTypes = {
