@@ -20,7 +20,7 @@ import FormModal from './Modals/FormModal.jsx';
 import Preloader from '../ui/Preloader/Preloader.jsx';
 import HouseInfo from './PageComponents/HouseInfo.jsx';
 
-import { editProfileRequest } from './UserAccountActions';
+import { editProfileRequest } from '../../services/actions/ProfileActions';
 import { addHouseRequest, getHousesRequest } from '../../services/actions/HouseActions';
 import { noop } from '../../utils/globalUtils';
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import changeHistory from '../HOC/ChangeHistory.jsx';
 import { noop } from '../../utils/globalUtils';
-import { loginRequestAction, loginSuccessAction } from './LoginActions';
+import { loginRequestAction, loginSuccessAction } from '../../services/actions/ProfileActions';
 
 function mapDispatchToProps(dispatch) {
     return {

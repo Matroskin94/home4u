@@ -40,8 +40,8 @@ class LogInForm extends PureComponent {
         isFetching: false
     };
     state = {
-        userPassword: '',
-        userLogin: '',
+        password: '',
+        userName: '',
         showPassword: false
     };
 
@@ -58,9 +58,9 @@ class LogInForm extends PureComponent {
     };
 
     handleEnterClick = () => {
-        const { userPassword, userLogin } = { ...this.state };
+        const { password, userName } = { ...this.state };
 
-        this.props.onEnterClick({ userPassword, userLogin });
+        this.props.onEnterClick({ password, userName });
     }
 
 
@@ -75,12 +75,12 @@ class LogInForm extends PureComponent {
                         <div className={classes.flexContainer}>
                             <AssignmentInd className={classes.icon} />
                             <TextField
-                                id='userLogin'
+                                id='userName'
                                 label='Введите логин'
                                 placeholder=''
                                 className={classes.textField}
                                 margin='normal'
-                                onChange={this.handleChange('userLogin')}
+                                onChange={this.handleChange('userName')}
                             />
                         </div>
 
@@ -93,7 +93,7 @@ class LogInForm extends PureComponent {
                                     id='loginPassword'
                                     type={this.state.showPassword ? 'text' : 'password'}
                                     value={this.state.password}
-                                    onChange={this.handleChange('userPassword')}
+                                    onChange={this.handleChange('password')}
                                     endAdornment={
                                         <InputAdornment position='end'>
                                             <IconButton
