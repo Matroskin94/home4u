@@ -1,4 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import
@@ -11,7 +12,8 @@ import
     IconButton,
     Input,
     InputLabel,
-    InputAdornment
+    InputAdornment,
+    Zoom
 } from '@material-ui/core';
 import
 {
@@ -42,11 +44,15 @@ class LogInForm extends PureComponent {
     state = {
         password: '',
         userName: '',
+        isProfileError: false,
         showPassword: false
     };
 
     handleChange = prop => event => {
-        this.setState({ [prop]: event.target.value });
+        this.setState({
+            isProfileError: false,
+            [prop]: event.target.value
+        });
     };
 
     handleMouseDownPassword = event => {
@@ -60,7 +66,27 @@ class LogInForm extends PureComponent {
     handleEnterClick = () => {
         const { password, userName } = { ...this.state };
 
-        this.props.onEnterClick({ password, userName });
+        this.props.onEnterClick({ password, userName }).catch(error => {
+            this.setState({ isProfileError: true });
+        });
+    }
+
+    renderError = () => {
+        const { classes } = this.props;
+        const { isProfileError } = this.state;
+
+        return (
+            <Zoom in={isProfileError}>
+                <div className={classes.errorContainer}>
+                    <Typography color='error' variant='caption'>Неверный логин или пароль</Typography>
+                    <Link to='#'>
+                        <Typography className={classes.restorePassword} variant='caption'>
+                            Восстановить пароль
+                        </Typography>
+                    </Link>
+                </div>
+            </Zoom>
+        );
     }
 
 
@@ -80,6 +106,7 @@ class LogInForm extends PureComponent {
                                 placeholder=''
                                 className={classes.textField}
                                 margin='normal'
+                                required
                                 onChange={this.handleChange('userName')}
                             />
                         </div>
@@ -94,6 +121,7 @@ class LogInForm extends PureComponent {
                                     type={this.state.showPassword ? 'text' : 'password'}
                                     value={this.state.password}
                                     onChange={this.handleChange('password')}
+                                    required
                                     endAdornment={
                                         <InputAdornment position='end'>
                                             <IconButton
@@ -107,6 +135,7 @@ class LogInForm extends PureComponent {
                                 />
                             </FormControl>
                         </div>
+                        {this.renderError()}
                         <div className={classes.flexContainer}>
                             <Button
                                 variant='raised'

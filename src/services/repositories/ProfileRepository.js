@@ -4,8 +4,12 @@ class ProfileRepository {
     login = (userName, password) => {
         const loginUser = new Promise((resolve, reject) => {
             setTimeout(() => {
-                this.setToken('mockToken');
-                resolve(mockUser);
+                if (userName !== 'admin') {
+                    reject(new Error('wrong password or userName'));
+                } else {
+                    this.setToken('mockToken');
+                    resolve(mockUser);
+                }
             }, 1000);
         });
 

@@ -16,19 +16,28 @@ const stylesJS = theme => ({
             width: '90%'
         }
     },
+    errorContainer: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        margin: '0 0 10px 34px'
+    },
+    restorePassword: {
+        color: '#303F9F'
+    },
     flexContainer: {
         display: 'flex',
-        flexDirection: 'row',
         width: '100%'
     },
     button: {
         margin: '5px auto'
     },
     textField: {
+        marginTop: '8px',
         width: '100%'
     },
     icon: {
-        margin: '35px 10px 5px 0px',
+        margin: '30px 10px 5px 0px',
         color: '#303F9F'
     }
 });

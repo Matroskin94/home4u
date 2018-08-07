@@ -15,11 +15,9 @@ export function loginSuccessAction(userData) {
     });
 }
 
-export function loginFailureAction(userData) {
+export function loginFailureAction() {
     const userState = {
-        isFetching: false,
-        isAuthenticated: false,
-        ...userData
+        isAuthenticated: false
     };
 
     return ({
@@ -36,6 +34,10 @@ export function loginRequestAction({ userName, password }) {
         return ProfileService.login(userName, password).then(response => {
             dispatch(fetchSuccess());
             dispatch(loginSuccessAction(response));
+        }).catch(error => {
+            dispatch(fetchSuccess());
+
+            throw (new Error(error));
         });
     };
 }

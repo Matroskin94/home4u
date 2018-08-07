@@ -37,7 +37,7 @@ export default () => WrappedComponent => {
         };
 
         handleEnterClick = user => {
-            this.props.loginUser(user).then(response => {
+            return this.props.loginUser(user).then(response => {
                 this.props.enterUser(user);
                 this.props.historyPush({ url: '/myhome' });
             });
