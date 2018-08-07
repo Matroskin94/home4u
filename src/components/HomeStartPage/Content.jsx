@@ -16,9 +16,9 @@ import {
 import PropTypes from 'prop-types';
 
 import stylesJS from './stylesJSS/ContentStylesJS';
-// import houseSettingsIcon from './img/houseCustoming(200).png';
-import profileIcon from '../../assets/ProfileCard.jpg';
-import customizeIcon from '../../assets/CustomizeCard.jpg';
+
+import houseIcon from './img/house(200).png';
+import houseSettingsIcon from './img/houseCustoming(200).png';
 
 const Content = ({ classes }) => (
     <Zoom in>
@@ -40,7 +40,7 @@ const Content = ({ classes }) => (
                     <Card className={classes.card}>
                         <CardMedia
                             title='Contemplative Reptile'
-                            image={profileIcon}
+                            image={houseIcon}
                             className={classes.media}
                         />
                         <CardContent>
@@ -74,7 +74,7 @@ const Content = ({ classes }) => (
                         <CardMedia
                             title='Contemplative Reptile'
                             className={classes.media}
-                            image={customizeIcon}
+                            image={houseSettingsIcon}
                         />
                         <CardContent>
                             <Typography

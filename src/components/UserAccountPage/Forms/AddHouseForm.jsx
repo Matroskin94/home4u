@@ -20,7 +20,7 @@ let AddHouseForm = ({ classes, handleSubmit, onSaveChanges }) => (
         <Field
             name='houseName'
             id='houseName'
-            label='Имя'
+            label='Название'
             margin='normal'
             className={classes.textFieldLarge}
             component={RenderFormTextField}
