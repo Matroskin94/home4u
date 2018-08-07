@@ -1,20 +1,7 @@
-import { ADD_HOUSE } from '../../constants/constants';
+import { ADD_HOUSE, SET_HOUSES } from '../../constants/constants';
 
 const initialState = {
-    userHouses: [
-        {
-            houseName: 'Моя квартира',
-            address: 'Витебск, пр.Фрунзе, д.35, кв.23',
-            houseDescription: 'Съёмная квартира',
-            timezone: '(GMT+3)'
-        },
-        {
-            houseName: 'Дача',
-            address: 'Витебск, ул. Дачная, д.15',
-            houseDescription: 'Съёмная квартира',
-            timezone: '(GMT+3)'
-        }
-    ]
+    userHouses: []
 };
 
 export default function HouseReducer(state = initialState, action) {
@@ -23,6 +10,13 @@ export default function HouseReducer(state = initialState, action) {
             return {
                 ...state,
                 userHouses: [...state.userHouses, { ...action.payload }]
+            };
+        }
+
+        case SET_HOUSES: {
+            return {
+                ...state,
+                userHouses: [...action.payload]
             };
         }
 

@@ -1,7 +1,6 @@
 import { LOGIN_SUCCESS, EDIT_PROFILE } from '../../constants/constants';
 
 const initialState = {
-    isFetching: false,
     isAuthenticated: true,
     password: '',
     userLogin: 'not authorized',

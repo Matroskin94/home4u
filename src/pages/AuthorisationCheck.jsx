@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import ROUTES from '../constants/routes';
+
 const AuthorisationCheck = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
@@ -12,7 +14,7 @@ const AuthorisationCheck = ({ component: Component, ...rest }) => (
             ) : (
                 <Redirect
                     to={{
-                        pathname: '/'
+                        pathname: ROUTES.BASE
                     }}
                 />
             )

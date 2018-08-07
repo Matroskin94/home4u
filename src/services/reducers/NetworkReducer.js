@@ -1,7 +1,13 @@
-import { FETCH_REQUEST, FETCH_SUCCESS } from '../../constants/constants';
+import {
+    FETCH_REQUEST,
+    FETCH_SUCCESS,
+    PARTIAL_FETCH_REQUEST,
+    PARTIAL_FETCH_SUCCESS
+} from '../../constants/constants';
 
 const initialState = {
-    isFetching: false
+    isFetching: false,
+    isPartialFetching: false
 };
 
 export default function NetworkReducer(state = initialState, action) {
@@ -17,6 +23,20 @@ export default function NetworkReducer(state = initialState, action) {
             return {
                 ...state,
                 isFetching: false
+            };
+        }
+
+        case PARTIAL_FETCH_REQUEST: {
+            return {
+                ...state,
+                isPartialFetching: true
+            };
+        }
+
+        case PARTIAL_FETCH_SUCCESS: {
+            return {
+                ...state,
+                isPartialFetching: false
             };
         }
 

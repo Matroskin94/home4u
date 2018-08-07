@@ -1,6 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { isEmpty } from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
 import {
@@ -20,7 +21,7 @@ import Preloader from '../ui/Preloader/Preloader.jsx';
 import HouseInfo from './PageComponents/HouseInfo.jsx';
 
 import { editProfileRequest } from './UserAccountActions';
-import { addHouseRequest } from '../../services/actions/HouseActions';
+import { addHouseRequest, getHousesRequest } from '../../services/actions/HouseActions';
 import { noop } from '../../utils/globalUtils';
 
 import { EDIT_PROFILE, ADD_HOUSE } from '../../constants/constants';
@@ -33,9 +34,11 @@ class Content extends PureComponent {
         resetForm: PropTypes.func,
         userInfo: PropTypes.object,
         isFetching: PropTypes.bool,
+        isPartialFetching: PropTypes.bool,
         userHouses: PropTypes.array,
         editUser: PropTypes.func,
-        addHouse: PropTypes.func
+        addHouse: PropTypes.func,
+        getHouses: PropTypes.func
     };
 
     static defaultProps = {
@@ -49,8 +52,10 @@ class Content extends PureComponent {
         resetForm: noop,
         editUser: noop,
         addHouse: noop,
+        getHouses: noop,
         userHouses: [],
-        isFetching: false
+        isFetching: false,
+        isPartialFetching: false
     };
 
     state = {
@@ -58,6 +63,12 @@ class Content extends PureComponent {
             [EDIT_PROFILE]: false
         }
     };
+
+    componentDidMount() {
+        if (isEmpty(this.props.userHouses)) {
+            this.props.getHouses();
+        }
+    }
 
     onProfileChangesSave = values => this.props.editUser(values);
 
@@ -78,7 +89,8 @@ class Content extends PureComponent {
             classes,
             userInfo,
             isFetching,
-            userHouses
+            userHouses,
+            isPartialFetching
         } = this.props;
         const { openModals } = this.state;
 
@@ -114,6 +126,7 @@ class Content extends PureComponent {
                             <HouseInfo
                                 handleAddClick={() => this.toggleModal(ADD_HOUSE)}
                                 houseList={userHouses}
+                                isHousesLoading={isPartialFetching}
                             />
                         </div>
                         <FormModal
@@ -139,6 +152,7 @@ class Content extends PureComponent {
 function mapStateToProps(state) {
     return {
         userInfo: state.profileReducer,
+        isPartialFetching: state.networkReducer.isPartialFetching,
         isFetching: state.networkReducer.isFetching,
         userHouses: state.houseReducer.userHouses
     };
@@ -146,6 +160,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        getHouses: () => dispatch(getHousesRequest()),
         editUser: userInfo => dispatch(editProfileRequest(userInfo)),
         addHouse: houseInfo => dispatch(addHouseRequest(houseInfo))
     };
