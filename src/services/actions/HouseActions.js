@@ -12,13 +12,15 @@ const userHouses = [
         houseName: 'Моя квартира',
         address: 'Витебск, пр.Фрунзе, д.35, кв.23',
         houseDescription: 'Съёмная квартира',
-        timezone: '(GMT+3)'
+        timezone: '(GMT+3)',
+        id: 1
     },
     {
         houseName: 'Дача',
         address: 'Витебск, ул. Дачная, д.15',
         houseDescription: 'Съёмная квартира',
-        timezone: '(GMT+3)'
+        timezone: '(GMT+3)',
+        id: 2
     }
 ];
 

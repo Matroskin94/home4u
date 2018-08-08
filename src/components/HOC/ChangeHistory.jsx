@@ -7,6 +7,8 @@ export default () => WrappedComponent => {
             router: PropTypes.object.isRequired
         };
 
+        getURLParams = () => this.context.router.route.match.params
+
         historyPush = ({ url, query = '' }) => {
             this.context.router.history.push(`${url}${query}`);
         }
@@ -20,6 +22,7 @@ export default () => WrappedComponent => {
                 {...this.props}
                 historyPush={this.historyPush}
                 historyBack={this.historyBack}
+                getURLParams={this.getURLParams}
             />;
         }
     }
