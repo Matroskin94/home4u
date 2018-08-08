@@ -19,6 +19,7 @@ import stylesJS from './stylesJSS/ContentStylesJS';
 
 import houseIcon from './img/house(200).png';
 import houseSettingsIcon from './img/houseCustoming(200).png';
+import houseMonitoringIcon from '../../assets/homeMonitoring(200_200).png';
 
 const Content = ({ classes }) => (
     <Zoom in>
@@ -92,6 +93,40 @@ const Content = ({ classes }) => (
                             <Link to='/myhome/control'>
                                 <Button size='small' color='primary'>
                                     Управление
+                                </Button>
+                            </Link>
+                        </CardActions>
+                    </Card>
+                </Grid>
+
+                <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    md={4}
+                >
+                    <Card className={classes.card}>
+                        <CardMedia
+                            title='Contemplative Reptile'
+                            image={houseMonitoringIcon}
+                            className={classes.media}
+                        />
+                        <CardContent>
+                            <Typography
+                                gutterBottom
+                                variant='headline'
+                                component='h2'
+                            >
+                            Мониторинг
+                            </Typography>
+                            <Typography component='p'>
+                                Просмотр информации о системе.
+                            </Typography>
+                        </CardContent>
+                        <CardActions className={classes.cardActions}>
+                            <Link to='/myhome/account'>
+                                <Button size='small' color='primary'>
+                                    Мониторинг
                                 </Button>
                             </Link>
                         </CardActions>

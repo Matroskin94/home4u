@@ -1,7 +1,7 @@
 import mockUser from './mockUser';
 
 class ProfileRepository {
-    login = (userName, password) => {
+    login(userName, password) {
         const loginUser = new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (userName !== 'admin') {
@@ -16,19 +16,24 @@ class ProfileRepository {
         return loginUser;
     }
 
-    logout = () => {
+    logout() {
         this.clearSession();
     }
 
-    clearSession = () => {
+    // eslint-disable-next-line
+    clearSession() {
         window.localStorage.removeItem('token');
-    };
+    }
 
-    setToken = token => {
+    // eslint-disable-next-line
+    setToken(token) {
         window.localStorage.setItem('token', token);
-    };
+    }
 
-    getUserToken = () => window.localStorage.getItem('token');
+    // eslint-disable-next-line
+    getUserToken() {
+        return window.localStorage.getItem('token');
+    }
 }
 
 export default new ProfileRepository();
