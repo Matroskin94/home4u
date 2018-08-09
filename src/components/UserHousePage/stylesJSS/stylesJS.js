@@ -1,3 +1,4 @@
+const drawerWidth = 200;
 const stylesJS = theme => (
     {
         container: {
@@ -9,6 +10,66 @@ const stylesJS = theme => (
                 width: '90%',
                 margin: '70px auto 20px auto'
             }
+        },
+        appFrame: {
+            height: 430,
+            zIndex: 1,
+            overflow: 'hidden',
+            position: 'relative',
+            display: 'flex',
+            width: '100%'
+        },
+        appBar: {
+            position: 'absolute',
+            transition: theme.transitions.create(['margin', 'width'], {
+                easing: theme.transitions.easing.sharp,
+                duration: theme.transitions.duration.leavingScreen
+            })
+        },
+        appBarShift: {
+            width: `calc(100% - ${drawerWidth})`,
+            transition: theme.transitions.create(['margin', 'width'], {
+                easing: theme.transitions.easing.easeOut,
+                duration: theme.transitions.duration.enteringScreen
+            })
+        },
+        appBarShiftLeft: {
+            marginLeft: drawerWidth
+        },
+        drawerPaper: {
+            position: 'relative',
+            width: drawerWidth
+        },
+        drawerHeader: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            padding: '0 8px 0 24px',
+            minHeight: '48px'
+        },
+        content: {
+            flexGrow: 1,
+            backgroundColor: theme.palette.background.default,
+            padding: theme.spacing.unit * 3,
+            transition: theme.transitions.create('margin', {
+                easing: theme.transitions.easing.sharp,
+                duration: theme.transitions.duration.leavingScreen
+            })
+        },
+        contentLeft: {
+            marginLeft: -drawerWidth
+        },
+        contentShift: {
+            transition: theme.transitions.create('margin', {
+                easing: theme.transitions.easing.easeOut,
+                duration: theme.transitions.duration.enteringScreen
+            })
+        },
+        icon: {
+            paddingRight: '10px'
+        },
+        floorsContainer: {
+            padding: '10px 0px'
         }
     }
 );

@@ -21,3 +21,7 @@ export const FORM_TYPES = {
         ACTION: 'Добавить'
     }
 };
+
+export const STATE_FIELDS = {
+    FLOORS_MENU_OPEN: 'FLOORS_MENU_OPEN'
+};
