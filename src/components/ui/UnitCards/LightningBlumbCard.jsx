@@ -9,48 +9,48 @@ import {
     Button,
     withStyles
 } from '@material-ui/core';
-import { SettingsOutlined } from '@material-ui/icons';
+import { SettingsOutlined, OfflineBolt } from '@material-ui/icons';
 
-import thermometer from '../../../../assets/Thermometer(100_100).png';
+import lightningBlumb from '../../../assets/LightningBlumb(100_100).png';
 
-import stylesJS from '../../stylesJSS/roomStyles';
+import stylesJS from './stylesJSS/cardStyles';
 
-const ThermometerCard = ({ classes, unit }) => (
+const LightningBlumbCard = ({ classes, unit }) => (
     <Fragment>
     	<Card className={classes.smallCard}>
                 <CardContent className={classes.smallCardContent}>
-                    <div className={classes.unitInfo}>
+                    <div  className={classes.unitInfo}>
                         <Typography variant='body1' className={classes.unitTitle}>
-                        {unit.unitName}
+                            {unit.unitName}
                         </Typography>
                         <Typography variant='subheading' color='textSecondary' className={classes.unitData}>
-                            {`Температура: ${unit.temperature}`}&deg;
-                        </Typography>
-                        <Typography variant='subheading' color='textSecondary' className={classes.unitData}>
-                            {`Влажность: ${unit.humidity}%`}
+                            Включено
                         </Typography>
                     </div>
                     <div className={classes.cardActions}>
                         <Button variant="fab" mini color="primary" aria-label="Add" className={classes.cardActionButton}>
                             <SettingsOutlined />
                         </Button>
+                        <Button variant="fab" mini color="primary" aria-label="Add" className={classes.cardActionButton}>
+                            <OfflineBolt/>
+                        </Button>
                     </div>
                 </CardContent>
                 <CardMedia
                     className={classes.maediaImg}
-                    image={thermometer}
+                    image={lightningBlumb}
                 />
             </Card>
     </Fragment>
 );
 
-ThermometerCard.propTypes = {
+LightningBlumbCard.propTypes = {
     classes: PropTypes.object.isRequired,
     unit: PropTypes.object
 };
 
-ThermometerCard.defaultProps = {
+LightningBlumbCard.defaultProps = {
     unit: {}
 };
 
-export default withStyles(stylesJS)(ThermometerCard);
+export default withStyles(stylesJS)(LightningBlumbCard);

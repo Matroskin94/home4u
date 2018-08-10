@@ -7,8 +7,8 @@ import {
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import ThermometerCard from './UnitCards/ThermometerCard.jsx';
-import LightningBlumbCard from './UnitCards/LightningBlumbCard.jsx';
+import ThermometerCard from '../../ui/UnitCards/ThermometerCard.jsx';
+import LightningBlumbCard from '../../ui/UnitCards/LightningBlumbCard.jsx';
 
 import stylesJS from '../stylesJSS/roomStyles';
 

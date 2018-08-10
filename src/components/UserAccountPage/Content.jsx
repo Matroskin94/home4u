@@ -19,6 +19,7 @@ import ProfileInfo from './PageComponents/ProfileInfo.jsx';
 import FormModal from './Modals/FormModal.jsx';
 import Preloader from '../ui/Preloader/Preloader.jsx';
 import HouseInfo from './PageComponents/HouseInfo.jsx';
+import ControlPanel from './PageComponents/ControlPanel.jsx';
 
 import { editProfileRequest } from '../../services/actions/ProfileActions';
 import { addHouseRequest, getHousesRequest } from '../../services/actions/HouseActions';
@@ -120,7 +121,7 @@ class Content extends PureComponent {
                                 </ExpansionPanelSummary>
                                 <Divider />
                                 <ExpansionPanelDetails>
-                                    <p>Панель информации</p>
+                                    <ControlPanel />
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
                             <HouseInfo

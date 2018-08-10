@@ -1,5 +1,8 @@
 const stylesJS = theme => (
     {
+    	controlPanelContainer: {
+    		width: '100%'
+    	},
         floorContainer: {
             display: 'flex',
             flex: '1 1 auto',
