@@ -54,7 +54,7 @@ class Content extends PureComponent {
         return (
             <Zoom in>
                 <Paper className={classes.container}>
-                    <Typography variant='display1'>{`House id ${this.state.houseId}`}</Typography>
+                    <Typography variant='title'>{`House id ${this.state.houseId}`}</Typography>
                     <div className={classes.appFrame}>
                         <AppBar
                             position='static'

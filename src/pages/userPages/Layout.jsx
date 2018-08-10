@@ -9,7 +9,7 @@ import HiddenMenu from '../../components/TopMenu/HiddenMenu.jsx';
 import ROUTES from '../../constants/routes';
 
 @homePageWrapper()
-class MyHomePageWrapper extends PureComponent {
+class Layout extends PureComponent {
     static propTypes = {
         styles: PropTypes.object,
         children: PropTypes.element.isRequired
@@ -39,5 +39,5 @@ class MyHomePageWrapper extends PureComponent {
 }
 
 
-export default MyHomePageWrapper;
+export default Layout;
 

@@ -12,7 +12,7 @@ const stylesJS = theme => (
             }
         },
         appFrame: {
-            height: 430,
+            height: 400,
             zIndex: 1,
             overflow: 'hidden',
             position: 'relative',
@@ -45,10 +45,11 @@ const stylesJS = theme => (
             alignItems: 'center',
             justifyContent: 'flex-start',
             padding: '0 8px 0 24px',
-            minHeight: '48px'
+            minHeight: '40px'
         },
         content: {
             flexGrow: 1,
+            overflow: 'auto',
             backgroundColor: theme.palette.background.default,
             padding: theme.spacing.unit * 3,
             transition: theme.transitions.create('margin', {
