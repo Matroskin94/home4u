@@ -45,7 +45,7 @@ const stylesJS = theme => (
             alignItems: 'center',
             justifyContent: 'flex-start',
             padding: '0 8px 0 24px',
-            minHeight: '40px'
+            minHeight: '48px'
         },
         content: {
             flexGrow: 1,
