@@ -9,11 +9,12 @@ import { withStyles } from '@material-ui/core/styles';
 
 import ThermometerCard from '../../ui/UnitCards/ThermometerCard.jsx';
 import LightningBlumbCard from '../../ui/UnitCards/LightningBlumbCard.jsx';
+import CameraCard from '../../ui/UnitCards/CameraCard.jsx';
 
 import stylesJS from '../stylesJSS/roomStyles';
 
 import floorMock from './floorMock';
-/* 
+/*
     - Название
     - Состояние
     - Кнопка действия
@@ -26,6 +27,7 @@ const Room = ({ classes }) => (
         <div className={classes.floorContainer}>
             <ThermometerCard unit={floorMock.floorUnits[0]} />
             <LightningBlumbCard unit={floorMock.floorUnits[1]} />
+            <CameraCard unit={floorMock.floorUnits[2]} />
         </div>
         <Typography variant='caption' className={classes.roomTitle}>Этаж 1 - Кухня</Typography>
         <Divider />

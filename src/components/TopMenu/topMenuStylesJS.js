@@ -7,6 +7,9 @@ const stylesJS = theme => (
                 width: '90%'
             }
         },
+        logoIcon: {
+            marginRight: '10px'
+        },
         link: {
             color: 'white'
         },

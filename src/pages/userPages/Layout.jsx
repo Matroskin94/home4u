@@ -21,6 +21,7 @@ class Layout extends PureComponent {
     menuItems = [
         { itemText: 'Профиль', itemLink: ROUTES.MY_HOME_ACCOUNT },
         { itemText: 'Управление', itemLink: ROUTES.MY_HOME_CONTROL },
+        { itemText: 'Мониторинг', itemLink: ROUTES.MY_HOME_MONITORING },
         { itemText: 'Выход', itemLink: ROUTES.BASE }
     ];
 

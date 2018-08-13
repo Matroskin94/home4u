@@ -1,4 +1,5 @@
 const drawerWidth = 200;
+const frameHeight = 380;
 const stylesJS = theme => (
     {
         container: {
@@ -12,7 +13,7 @@ const stylesJS = theme => (
             }
         },
         appFrame: {
-            height: 400,
+            height: frameHeight,
             zIndex: 1,
             overflow: 'hidden',
             position: 'relative',
@@ -45,7 +46,7 @@ const stylesJS = theme => (
             alignItems: 'center',
             justifyContent: 'flex-start',
             padding: '0 8px 0 24px',
-            minHeight: '48px'
+            minHeight: '35px'
         },
         content: {
             flexGrow: 1,

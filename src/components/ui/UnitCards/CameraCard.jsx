@@ -9,15 +9,15 @@ import {
     Button,
     withStyles
 } from '@material-ui/core';
-import { SettingsOutlined, OfflineBolt } from '@material-ui/icons';
+import { SettingsOutlined, PowerSettingsNew } from '@material-ui/icons';
 
-import lightningBlumb from '../../../assets/LightningBlumb(100_100).png';
+import camera from '../../../assets/Camera(100_100).png';
 
 import { getUnitState } from '../../../utils/globalUtils';
 
 import stylesJS from './stylesJSS/cardStyles';
 
-const LightningBlumbCard = ({ classes, unit }) => (
+const CameraCard = ({ classes, unit }) => (
     <Fragment>
         <Card className={classes.smallCard}>
             <CardContent className={classes.smallCardContent}>
@@ -50,25 +50,25 @@ const LightningBlumbCard = ({ classes, unit }) => (
                         aria-label='Add'
                         className={classes.cardActionButton}
                     >
-                        <OfflineBolt />
+                        <PowerSettingsNew />
                     </Button>
                 </div>
             </CardContent>
             <CardMedia
                 className={classes.maediaImg}
-                image={lightningBlumb}
+                image={camera}
             />
         </Card>
     </Fragment>
 );
 
-LightningBlumbCard.propTypes = {
+CameraCard.propTypes = {
     classes: PropTypes.object.isRequired,
     unit: PropTypes.object
 };
 
-LightningBlumbCard.defaultProps = {
+CameraCard.defaultProps = {
     unit: {}
 };
 
-export default withStyles(stylesJS)(LightningBlumbCard);
+export default withStyles(stylesJS)(CameraCard);

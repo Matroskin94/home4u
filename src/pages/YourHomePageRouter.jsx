@@ -7,6 +7,7 @@ import Layout from './userPages/Layout.jsx';
 import HomeStartPage from './userPages/HomeStartPage.jsx';
 import UserAccountPage from './userPages/UserAccountPage.jsx';
 import UserHousePage from './userPages/UserHousePage.jsx';
+import MonitoringPage from './userPages/MonitoringPage.jsx';
 
 const YourHomePageRouter = ({ match }) =>
     <Layout>
@@ -18,6 +19,7 @@ const YourHomePageRouter = ({ match }) =>
             />
             <Route path={`${match.url}/control`} component={HomeControlPage} />
             <Route path={`${match.url}/account`} component={UserAccountPage} />
+            <Route path={`${match.url}/monitoring`} component={MonitoringPage} />
             <Route path={`${match.url}/:id`} component={UserHousePage} />
         </Switch>
     </Layout>;

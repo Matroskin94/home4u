@@ -15,11 +15,14 @@ import {
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-import stylesJS from './stylesJSS/ContentStylesJS';
-
 import profileIcon from '../../assets/ProfileIcon_Type_1_(200_200).png';
 import houseSettingsIcon from './img/houseCustoming(200).png';
 import houseMonitoringIcon from '../../assets/homeMonitoring(200_200).png';
+
+import ROUTES from '../../constants/routes';
+
+import stylesJS from './stylesJSS/ContentStylesJS';
+
 
 const Content = ({ classes }) => (
     <Zoom in>
@@ -57,7 +60,7 @@ const Content = ({ classes }) => (
                             </Typography>
                         </CardContent>
                         <CardActions className={classes.cardActions}>
-                            <Link to='/myhome/account'>
+                            <Link to={ROUTES.MY_HOME_ACCOUNT}>
                                 <Button size='small' color='primary'>
                                     Профиль
                                 </Button>
@@ -90,7 +93,7 @@ const Content = ({ classes }) => (
                             </Typography>
                         </CardContent>
                         <CardActions className={classes.cardActions}>
-                            <Link to='/myhome/control'>
+                            <Link to={ROUTES.MY_HOME_CONTROL}>
                                 <Button size='small' color='primary'>
                                     Управление
                                 </Button>
@@ -124,7 +127,7 @@ const Content = ({ classes }) => (
                             </Typography>
                         </CardContent>
                         <CardActions className={classes.cardActions}>
-                            <Link to='/myhome/account'>
+                            <Link to={ROUTES.MY_HOME_MONITORING}>
                                 <Button size='small' color='primary'>
                                     Мониторинг
                                 </Button>

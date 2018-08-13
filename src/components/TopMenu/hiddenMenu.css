@@ -30,6 +30,13 @@
   backface-visibility: hidden;
 }
 
+@media (max-width: 960px ) {
+  .btnMenu {
+    top: 17px;
+    right: 14px;
+  }
+}
+
 .btnMenu span {
   display: block;
   height: 3px;

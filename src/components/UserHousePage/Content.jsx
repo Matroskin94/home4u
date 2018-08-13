@@ -37,7 +37,7 @@ class Content extends PureComponent {
     };
 
     state = {
-        houseId: this.props.getURLParams().id,
+        // houseId: this.props.getURLParams().id,
         [STATE_FIELDS.FLOORS_MENU_OPEN]: true
     }
 
@@ -54,7 +54,8 @@ class Content extends PureComponent {
         return (
             <Zoom in>
                 <Paper className={classes.container}>
-                    <Typography variant='title'>{`House id ${this.state.houseId}`}</Typography>
+                    <Typography variant='title'>Моя квартира</Typography>
+                    <Typography variant='caption' gutterBottom>Витебск, пр. Фрунзе, д.35, кв.23</Typography>
                     <div className={classes.appFrame}>
                         <AppBar
                             position='static'

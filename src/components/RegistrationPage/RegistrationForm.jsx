@@ -14,7 +14,7 @@ import RenderFormTextField from '../common/RenderFormTextField.jsx';
 const selector = formValueSelector('register');
 const fieldsArray = ['login', 'email', 'password', 'passwordConfirm', 'name', 'surname', 'phone'];
 const sentRequest = values => {
-    console.log('SUBMIT', values);
+    // console.log('SUBMIT', values);
 };
 
 let RegistrationForm = ({

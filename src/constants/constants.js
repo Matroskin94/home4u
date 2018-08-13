@@ -27,6 +27,7 @@ export const STATE_FIELDS = {
 };
 
 export const UNIT_TYPES = {
+    CAMERA: 'CAMERA',
     THERMOMETER: 'THERMOMETER',
     LIGHT_BULB: 'LIGHT_BULB'
-}
+};

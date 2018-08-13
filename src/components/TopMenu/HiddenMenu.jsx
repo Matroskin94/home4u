@@ -6,7 +6,7 @@ import stylesCSS from './hiddenMenu.css';
 import HiddenMenuItem from './MenuItems/HiddenMenuItem.jsx';
 
 const HiddenMenu = ({ menuItems }) => (
-    <Hidden smUp>
+    <Hidden mdUp>
         <input
             type='checkbox'
             id='hmt'

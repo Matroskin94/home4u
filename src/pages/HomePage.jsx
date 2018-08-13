@@ -30,7 +30,7 @@ class housePage extends PureComponent {
                 <TopMenu menuItems={this.menuItems} />
                 <Content />
                 <Footer />
-                <HiddenMenu menuItems={this.menuItems} />
+                {/* <HiddenMenu menuItems={this.menuItems} /> */}
             </div>
         );
     }

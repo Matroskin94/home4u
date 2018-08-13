@@ -7,8 +7,13 @@ import withWidth from '@material-ui/core/withWidth';
 import compose from 'recompose/compose';
 import Hidden from '@material-ui/core/Hidden';
 
+import logoIcon from '../../assets/logo(24).png';
+
 import stylesJS from './topMenuStylesJS';
 import MenuItem from './MenuItems/MenuItem.jsx';
+import HiddenMenu from './HiddenMenu.jsx';
+
+import ROUTES from '../../constants/routes';
 
 class TopMenu extends PureComponent {
     static propTypes = {
@@ -21,17 +26,26 @@ class TopMenu extends PureComponent {
     };
 
     render() {
+        const { classes } = this.props;
+
         return (
             <AppBar position='fixed'>
-                <Toolbar className={this.props.classes.container}>
+                <Toolbar className={classes.container}>
+                    <Link className={classes.link} to={ROUTES.MY_HOME}>
+                        <img
+                            src={logoIcon}
+                            alt='Home4U'
+                            className={classes.logoIcon}
+                        />
+                    </Link>
                     <Typography
                         variant='title'
                         color='inherit'
                         className={this.props.classes.flex}
                     >
-                        <Link className={this.props.classes.link} to='/myhome'>Home4U</Link>
+                        <Link className={classes.link} to={ROUTES.MY_HOME}>Home4U</Link>
                     </Typography>
-                    <Hidden xsDown>
+                    <Hidden smDown>
                         {this.props.menuItems.map(item => (
                             <MenuItem
                                 key={`${item.itemText}nothidden`}
@@ -40,6 +54,7 @@ class TopMenu extends PureComponent {
                             />
                         ))}
                     </Hidden>
+                    <HiddenMenu menuItems={this.menuItems} />
                 </Toolbar>
             </AppBar>
         );

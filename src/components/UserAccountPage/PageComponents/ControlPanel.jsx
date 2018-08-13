@@ -7,7 +7,7 @@ import { Typography, Divider } from '@material-ui/core/';
 import ThermometerCard from '../../ui/UnitCards/ThermometerCard.jsx';
 import LightningBlumbCard from '../../ui/UnitCards/LightningBlumbCard.jsx';
 
-import stylesJS from '../stylesJSS/ControlPanelStylesJS.js'
+import stylesJS from '../stylesJSS/ControlPanelStylesJS';
 
 import floorMock from '../../UserHousePage/PageComponents/floorMock';
 
