@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { connect } from 'react-redux';
 
 import {
     withStyles,
@@ -15,11 +16,13 @@ import { Menu, ChevronLeft } from '@material-ui/icons';
 
 import changeHistory from '../HOC/ChangeHistory.jsx';
 import MenuDrawer from './PageComponents/MenuDrawer.jsx';
-import Room from './PageComponents/Room.jsx';
+import Floor from './PageComponents/Floor.jsx';
+import ModalFullScreen from '../ui/ModalFullScreen/ModalFullScreen.jsx';
+import { ThermometerModal, LightBlumbModal, CameraModal } from '../ui/UnitModals';
 
 import { noop } from '../../utils/globalUtils';
 
-import { STATE_FIELDS } from '../../constants/constants';
+import { STATE_FIELDS, UNIT_TYPES } from '../../constants/constants';
 
 import stylesJS from './stylesJSS/stylesJS';
 
@@ -38,7 +41,10 @@ class Content extends PureComponent {
 
     state = {
         // houseId: this.props.getURLParams().id,
-        [STATE_FIELDS.FLOORS_MENU_OPEN]: true
+        [STATE_FIELDS.FLOORS_MENU_OPEN]: true,
+        [STATE_FIELDS.FULL_SCREEN_MODAL_OPEN]: false,
+        activeModal: '',
+        activeUnit: {}
     }
 
     toggleStateField = fieldName => () => {
@@ -47,14 +53,53 @@ class Content extends PureComponent {
         }));
     }
 
+    toggleModal = unit => () => {
+        this.setState(prevState => ({
+            [STATE_FIELDS.FULL_SCREEN_MODAL_OPEN]: !prevState[STATE_FIELDS.FULL_SCREEN_MODAL_OPEN],
+            activeModal: unit.unitType,
+            activeUnit: unit
+        }));
+    }
+
+    renderModal = () => { // TODO: Вынести в отдельный файл CardModal вместе с JSX модалки
+        const { activeModal, activeUnit } = this.state;
+
+        switch (activeModal) {
+            case UNIT_TYPES.CAMERA: {
+                return (<CameraModal />);
+            }
+
+            case UNIT_TYPES.THERMOMETER: {
+                return (<ThermometerModal unit={activeUnit} />);
+            }
+
+            case UNIT_TYPES.LIGHT_BULB: {
+                return (<LightBlumbModal />);
+            }
+
+            default: {
+                return <Typography>Modal error!</Typography>;
+            }
+        }
+    }
+
     render() {
         const { classes } = this.props;
-        const { [STATE_FIELDS.FLOORS_MENU_OPEN]: isMenuOpened } = this.state;
+        const {
+            [STATE_FIELDS.FLOORS_MENU_OPEN]: isMenuOpened,
+            [STATE_FIELDS.FULL_SCREEN_MODAL_OPEN]: isModalOpened,
+            activeUnit
+        } = this.state;
 
         return (
             <Zoom in>
                 <Paper className={classes.container}>
-                    <Typography variant='title'>Моя квартира</Typography>
+                    <Typography
+                        onClick={this.toggleStateField(STATE_FIELDS.FULL_SCREEN_MODAL_OPEN)}
+                        variant='title'
+                    >
+                        Моя квартира
+                    </Typography>
                     <Typography variant='caption' gutterBottom>Витебск, пр. Фрунзе, д.35, кв.23</Typography>
                     <div className={classes.appFrame}>
                         <AppBar
@@ -87,13 +132,37 @@ class Content extends PureComponent {
                             })}
                         >
                             <div className={classes.drawerHeader} />
-                            <Room />
+                            <Floor handleEditUnit={this.toggleModal} />
                         </main>
                     </div>
+                    <ModalFullScreen
+                        title={activeUnit.unitName}
+                        isOpen={isModalOpened}
+                        onClose={this.toggleStateField(STATE_FIELDS.FULL_SCREEN_MODAL_OPEN)}
+                    >
+                        {this.renderModal()}
+                    </ModalFullScreen>
                 </Paper>
             </Zoom>
         );
     }
 }
 
-export default withStyles(stylesJS)(Content);
+function mapStateToProps(state) {
+    return {
+        /* userInfo: state.profileReducer,
+        isPartialFetching: state.networkReducer.isPartialFetching,
+        isFetching: state.networkReducer.isFetching,
+        userHouses: state.houseReducer.userHouses */
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        /* getHouses: () => dispatch(getHousesRequest()),
+        editUser: userInfo => dispatch(editProfileRequest(userInfo)),
+        addHouse: houseInfo => dispatch(addHouseRequest(houseInfo)) */
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(stylesJS)(Content));

@@ -13,11 +13,11 @@ import { SettingsOutlined, PowerSettingsNew } from '@material-ui/icons';
 
 import camera from '../../../assets/Camera(100_100).png';
 
-import { getUnitState } from '../../../utils/globalUtils';
+import { getUnitState, noop } from '../../../utils/globalUtils';
 
 import stylesJS from './stylesJSS/cardStyles';
 
-const CameraCard = ({ classes, unit }) => (
+const CameraCard = ({ classes, unit, onEdit }) => (
     <Fragment>
         <Card className={classes.smallCard}>
             <CardContent className={classes.smallCardContent}>
@@ -40,6 +40,7 @@ const CameraCard = ({ classes, unit }) => (
                         color='primary'
                         aria-label='Add'
                         className={classes.cardActionButton}
+                        onClick={onEdit(unit)}
                     >
                         <SettingsOutlined />
                     </Button>
@@ -64,11 +65,13 @@ const CameraCard = ({ classes, unit }) => (
 
 CameraCard.propTypes = {
     classes: PropTypes.object.isRequired,
-    unit: PropTypes.object
+    unit: PropTypes.object,
+    onEdit: PropTypes.func
 };
 
 CameraCard.defaultProps = {
-    unit: {}
+    unit: {},
+    onEdit: noop
 };
 
 export default withStyles(stylesJS)(CameraCard);

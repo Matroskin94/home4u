@@ -8,6 +8,7 @@ export const PARTIAL_FETCH_SUCCESS = 'PARTIAL_FETCH_SUCCESS';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const ADD_HOUSE = 'ADD_HOUSE';
 export const SET_HOUSES = 'SET_HOUSES';
+export const OPEN_CARD_MODAL = 'OPEN_CARD_MODAL';
 
 export const FORM_TYPES = {
     [EDIT_PROFILE]: {
@@ -23,7 +24,8 @@ export const FORM_TYPES = {
 };
 
 export const STATE_FIELDS = {
-    FLOORS_MENU_OPEN: 'FLOORS_MENU_OPEN'
+    FLOORS_MENU_OPEN: 'FLOORS_MENU_OPEN',
+    FULL_SCREEN_MODAL_OPEN: 'FULL_SCREEN_MODAL_OPEN'
 };
 
 export const UNIT_TYPES = {

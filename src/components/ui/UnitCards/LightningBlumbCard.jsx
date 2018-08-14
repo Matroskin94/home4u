@@ -13,11 +13,11 @@ import { SettingsOutlined, OfflineBolt } from '@material-ui/icons';
 
 import lightningBlumb from '../../../assets/LightningBlumb(100_100).png';
 
-import { getUnitState } from '../../../utils/globalUtils';
+import { getUnitState, noop } from '../../../utils/globalUtils';
 
 import stylesJS from './stylesJSS/cardStyles';
 
-const LightningBlumbCard = ({ classes, unit }) => (
+const LightningBlumbCard = ({ classes, unit, onEdit }) => (
     <Fragment>
         <Card className={classes.smallCard}>
             <CardContent className={classes.smallCardContent}>
@@ -40,6 +40,7 @@ const LightningBlumbCard = ({ classes, unit }) => (
                         color='primary'
                         aria-label='Add'
                         className={classes.cardActionButton}
+                        onClick={onEdit(unit)}
                     >
                         <SettingsOutlined />
                     </Button>
@@ -64,11 +65,13 @@ const LightningBlumbCard = ({ classes, unit }) => (
 
 LightningBlumbCard.propTypes = {
     classes: PropTypes.object.isRequired,
-    unit: PropTypes.object
+    unit: PropTypes.object,
+    onEdit: PropTypes.func
 };
 
 LightningBlumbCard.defaultProps = {
-    unit: {}
+    unit: {},
+    onEdit: noop
 };
 
 export default withStyles(stylesJS)(LightningBlumbCard);

@@ -13,9 +13,10 @@ import { SettingsOutlined } from '@material-ui/icons';
 
 import thermometer from '../../../assets/Thermometer(100_100).png';
 
+import { noop } from '../../../utils/globalUtils';
 import stylesJS from './stylesJSS/cardStyles';
 
-const ThermometerCard = ({ classes, unit }) => (
+const ThermometerCard = ({ classes, unit, onEdit }) => (
     <Fragment>
         <Card className={classes.smallCard}>
             <CardContent className={classes.smallCardContent}>
@@ -45,6 +46,7 @@ const ThermometerCard = ({ classes, unit }) => (
                         color='primary'
                         aria-label='Add'
                         className={classes.cardActionButton}
+                        onClick={onEdit(unit)}
                     >
                         <SettingsOutlined />
                     </Button>
@@ -57,11 +59,13 @@ const ThermometerCard = ({ classes, unit }) => (
 
 ThermometerCard.propTypes = {
     classes: PropTypes.object.isRequired,
-    unit: PropTypes.object
+    unit: PropTypes.object,
+    onEdit: PropTypes.func
 };
 
 ThermometerCard.defaultProps = {
-    unit: {}
+    unit: {},
+    onEdit: noop
 };
 
 export default withStyles(stylesJS)(ThermometerCard);
