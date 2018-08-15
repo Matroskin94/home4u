@@ -1,14 +1,37 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import ReactPlayer from 'react-player';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography, Paper } from '@material-ui/core/';
 
-import stylesJS from './styles/CommonStyles';
+import stylesJS from './styles/CameraCardStyles';
 
 const CameraModal = ({ classes, unit }) => (
-    <Paper className={classes.container}>
-        <Typography variant='display1'>CameraModal</Typography>
-    </Paper>
+    <Fragment>
+        <Paper className={classes.cameraCard}>
+            <div className={classes.header}>
+                <Typography align='center' variant='display1'>Онлайн трансляция</Typography>
+            </div>
+            <div className={classes.playerWrapper}>
+                <ReactPlayer
+                    url='https://youtu.be/P9qjE1dm75A'
+                    playing
+                    width='100%'
+                    height='100%'
+                    className={classes.reactPlayer}
+                />
+            </div>
+        </Paper>
+        <Paper className={classes.infoContainer}>
+            <div className={classes.header}>
+                <Typography align='center' variant='display1'>Информация</Typography>
+            </div>
+            <div className={classes.cameraInfo}>
+                <Typography variant='body2'>Название устройства: {unit.unitName}</Typography>
+
+            </div>
+        </Paper>
+    </Fragment>
 );
 
 CameraModal.propTypes = {

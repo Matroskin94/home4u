@@ -46,7 +46,7 @@ const ModalFullScreen = ({
                 <Typography
                     variant='title'
                     color='inherit'
-                    className={classes.flex}
+                    className={classes.modalTitle}
                 >
                     {title}
                 </Typography>
@@ -55,7 +55,9 @@ const ModalFullScreen = ({
                 </Button> */}
             </Toolbar>
         </AppBar>
-        {children}
+        <div className={classes.contentContainer}>
+            {children}
+        </div>
     </Dialog>
 );
 

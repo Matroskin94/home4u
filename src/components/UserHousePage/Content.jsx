@@ -66,7 +66,7 @@ class Content extends PureComponent {
 
         switch (activeModal) {
             case UNIT_TYPES.CAMERA: {
-                return (<CameraModal />);
+                return (<CameraModal unit={activeUnit} />);
             }
 
             case UNIT_TYPES.THERMOMETER: {
