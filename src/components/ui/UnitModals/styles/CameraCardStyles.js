@@ -17,7 +17,7 @@ const stylesJS = theme => (
         header: {
             padding: '10px 0'
         },
-        infoContainer: {
+        infoCard: {
             flex: '1 0 auto',
             minWidth: '400px',
             [theme.breakpoints.down('900')]: {
@@ -39,6 +39,13 @@ const stylesJS = theme => (
             maxHeight: '360px',
             top: 0,
             left: 0
+        },
+        propertyLine: {
+            fontSize: '0.95rem',
+            '& > span': {
+                fontWeight: 600,
+                color: 'black'
+            }
         }
     }
 );

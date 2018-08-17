@@ -29,14 +29,14 @@ const ThermometerCard = ({ classes, unit, onEdit }) => (
                         color='textSecondary'
                         className={classes.unitData}
                     >
-                        {`Температура: ${unit.temperature}`}&deg;
+                        {`Температура: ${unit.temperature.value}${unit.temperature.units}`}
                     </Typography>
                     <Typography
                         variant='subheading'
                         color='textSecondary'
                         className={classes.unitData}
                     >
-                        {`Влажность: ${unit.humidity}%`}
+                        {`Влажность: ${unit.humidity.value}${unit.humidity.units}`}
                     </Typography>
                 </div>
                 <div className={classes.cardActions}>

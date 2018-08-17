@@ -7,8 +7,21 @@ const floorMock = {
             unitName: 'Температура в квартире',
             unitType: UNIT_TYPES.THERMOMETER,
             isFavorite: false,
-            temperature: 22,
-            humidity: 80
+            temperature: {
+                value: 22,
+                average: 21,
+                units: '\u00B0С'
+            },
+            humidity: {
+                value: 78,
+                average: 75,
+                units: '%'
+            },
+            pressure: {
+                value: 768,
+                average: 760,
+                units: 'мм. рт. ст'
+            }
         }, {
             unitName: 'Освещение в прихожей',
             unitType: UNIT_TYPES.LIGHT_BULB,

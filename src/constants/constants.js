@@ -10,6 +10,12 @@ export const ADD_HOUSE = 'ADD_HOUSE';
 export const SET_HOUSES = 'SET_HOUSES';
 export const OPEN_CARD_MODAL = 'OPEN_CARD_MODAL';
 
+export const MESURE_TYPES = {
+    TEMPERATURE: 'temperature',
+    HUMIDITY: 'humidity',
+    PRESSURE: 'pressure'
+};
+
 export const FORM_TYPES = {
     [EDIT_PROFILE]: {
         FORM_NAME: 'editUser',

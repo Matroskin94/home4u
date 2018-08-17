@@ -4,7 +4,7 @@ import ReactPlayer from 'react-player';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography, Paper } from '@material-ui/core/';
 
-import stylesJS from './styles/CameraCardStyles';
+import stylesJS from '../styles/CameraCardStyles';
 
 const CameraModal = ({ classes, unit }) => (
     <Fragment>
@@ -22,13 +22,14 @@ const CameraModal = ({ classes, unit }) => (
                 />
             </div>
         </Paper>
-        <Paper className={classes.infoContainer}>
+        <Paper className={classes.infoCard}>
             <div className={classes.header}>
                 <Typography align='center' variant='display1'>Информация</Typography>
             </div>
             <div className={classes.cameraInfo}>
-                <Typography variant='body2'>Название устройства: {unit.unitName}</Typography>
-
+                <Typography variant='caption' className={classes.propertyLine}>
+                    <span>Название устройства:</span> {unit.unitName}
+                </Typography>
             </div>
         </Paper>
     </Fragment>
