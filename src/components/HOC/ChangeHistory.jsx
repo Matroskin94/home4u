@@ -5,7 +5,7 @@ export default () => WrappedComponent => {
     class ChangeHistory extends PureComponent {
         static contextTypes = {
             router: PropTypes.object.isRequired
-        };
+        }
 
         getURLParams = () => this.context.router.route.match.params
 

@@ -1,21 +1,17 @@
 import profileRepository from '../repositories/ProfileRepository';
 
 class ProfileService {
-    constructor() {
-        this.profile = profileRepository;
+    static login(userName, password) {
+        return profileRepository.login(userName, password);
     }
 
-    login(userName, password) {
-        return this.profile.login(userName, password);
+    static logout() {
+        return profileRepository.logout();
     }
 
-    logout() {
-        return this.profile.logout();
-    }
-
-    getUserToken() {
-        return this.profile.getUserToken();
+    static getUserToken() {
+        return profileRepository.getUserToken();
     }
 }
 
-export default new ProfileService();
+export default ProfileService;
